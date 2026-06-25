@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:EntertainmentCenter.ViewModels"
+    xmlns:models="clr-namespace:EntertainmentCenter.Models"
+    xmlns:strings="clr-namespace:EntertainmentCenter.Resources.Strings"
+    x:Class="EntertainmentCenter.Views.ClientHistoryPage"
+    x:DataType="vm:ClientHistoryViewModel"
+    Title="{x:Static strings:AppResources.ClientHistory}"
+    BackgroundColor="{StaticResource Background}">
+
+    <Grid RowDefinitions="Auto,Auto,Auto,*" Padding="16" RowSpacing="12">
+
+        <!-- Search -->
+        <Frame Grid.Row="0" Style="{StaticResource CardStyle}">
+            <VerticalStackLayout Spacing="10">
+                <Entry Placeholder="{x:Static strings:AppResources.NameOrPhone}" Text="{Binding SearchQuery}"
+                       ReturnType="Search" ReturnCommand="{Binding SearchCommand}" />
+                <Button Text="{x:Static strings:AppResources.Search}" Style="{StaticResource ButtonSecondary}"
+                        Command="{Binding SearchCommand}" />
+            </VerticalStackLayout>
+        </Frame>
+
+        <!-- Date filters -->
+        <HorizontalStackLayout Grid.Row="1" Spacing="8">
+            <Button Text="{x:Static strings:AppResources.Today}" Command="{Binding SetFilterCommand}" CommandParameter="Today"
+                    FontSize="13" HeightRequest="36" Padding="12,6"
+                    BackgroundColor="{Binding IsToday, Converter={StaticResource BoolToColor}}"
+                    TextColor="{Binding IsToday, Converter={StaticResource BoolToColor}, ConverterParameter='#FFFFFF'}"
+                    BorderColor="{StaticResource BluePrimary}" BorderWidth="1"
+                    CornerRadius="18" />
+            <Button Text="{x:Static strings:AppResources.Week}" Command="{Binding SetFilterCommand}" CommandParameter="Week"
+                    FontSize="13" HeightRequest="36" Padding="12,6"
+                    BackgroundColor="{Binding IsWeek, Converter={StaticResource BoolToColor}}"
+                    TextColor="{Binding IsWeek, Converter={StaticResource BoolToColor}, ConverterParameter='#FFFFFF'}"
+                    BorderColor="{StaticResource BluePrimary}" BorderWidth="1"
+                    CornerRadius="18" />
+            <Button Text="{x:Static strings:AppResources.All}" Command="{Binding SetFilterCommand}" CommandParameter="All"
+                    FontSize="13" HeightRequest="36" Padding="12,6"
+                    BackgroundColor="{Binding IsAll, Converter={StaticResource BoolToColor}}"
+                    TextColor="{Binding IsAll, Converter={StaticResource BoolToColor}, ConverterParameter='#FFFFFF'}"
+                    BorderColor="{StaticResource BluePrimary}" BorderWidth="1"
+                    CornerRadius="18" />
+        </HorizontalStackLayout>
+
+        <!-- Loading -->
+        <ActivityIndicator Grid.Row="2"
+                           IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
+                           HorizontalOptions="Center" />
+
+        <!-- Sessions list -->
+        <CollectionView Grid.Row="3" ItemsSource="{Binding Sessions}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Session">
+                    <Frame Style="{StaticResource CardStyle}" Margin="0,4">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ClientHistoryViewModel}}, Path=NavigateToClientDetailCommand}"
+                                CommandParameter="{Binding .}" />
+                        </Frame.GestureRecognizers>
+                        <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="8" RowSpacing="4">
+                            <Label Text="{Binding Client.FullName}" Style="{StaticResource ClientNameLabel}" />
+                            <Frame Grid.Column="1" Style="{StaticResource ZoneBadge}">
+                                <Label Text="{Binding Tariff.Zone.Name}" FontSize="11"
+                                       TextColor="{StaticResource BlueText}" />
+                            </Frame>
+                            <HorizontalStackLayout Grid.Row="1" Grid.ColumnSpan="2" Spacing="12">
+                                <Label FontSize="13" TextColor="{StaticResource TextSecondary}">
+                                    <Label.Text>
+                                        <Binding Path="DisplayTime" />
+                                    </Label.Text>
+                                </Label>
+                                <Label FontSize="13" TextColor="{StaticResource TextSecondary}">
+                                    <Label.Text>
+                                        <Binding Path="Tariff.Label" StringFormat="{}{0}" />
+                                    </Label.Text>
+                                </Label>
+                                <Label FontSize="13" TextColor="{StaticResource TextSecondary}"
+                                       HorizontalOptions="EndAndExpand">
+                                    <Label.Text>
+                                        <Binding Path="FinalPrice" StringFormat="{}{0:F2} {x:Static strings:AppResources.Lei}" />
+                                    </Label.Text>
+                                </Label>
+                             </HorizontalStackLayout>
+                             <!-- Session status -->
+                             <HorizontalStackLayout Grid.Row="2" Grid.ColumnSpan="2" Margin="0,4,0,0">
+                                 <Frame Padding="8,3" CornerRadius="10" HasShadow="False" BorderColor="Transparent"
+                                        BackgroundColor="{Binding StatusBgColor}">
+                                     <Label Text="{Binding StatusText}" FontSize="11" FontAttributes="Bold"
+                                            TextColor="{Binding StatusColor}" />
+                                 </Frame>
+                             </HorizontalStackLayout>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+            <CollectionView.EmptyView>
+                <Label Text="{x:Static strings:AppResources.SessionsNotFound}" Style="{StaticResource SubLabel}"
+                       HorizontalOptions="Center" Margin="0,40" />
+            </CollectionView.EmptyView>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>

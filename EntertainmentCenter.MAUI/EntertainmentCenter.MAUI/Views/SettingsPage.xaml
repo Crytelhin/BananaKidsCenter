@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EntertainmentCenter.ViewModels"
+             xmlns:strings="clr-namespace:EntertainmentCenter.Resources.Strings"
+             x:Class="EntertainmentCenter.Views.SettingsPage"
+             x:DataType="vm:SettingsViewModel"
+             Title="{x:Static strings:AppResources.Settings}"
+             BackgroundColor="{StaticResource Background}">
+
+    <VerticalStackLayout Padding="16" Spacing="12">
+
+        <!-- Language Selector -->
+        <VerticalStackLayout Spacing="10" Margin="4,0">
+            <Label Text="{x:Static strings:AppResources.SelectLanguage}" FontSize="16" FontAttributes="Bold"
+                   TextColor="{StaticResource TextPrimary}" Margin="0,0,0,4" />
+
+            <!-- Русский Card -->
+            <Frame Padding="0" HasShadow="False" CornerRadius="12"
+                   BorderColor="{Binding IsRussianSelected, Converter={StaticResource BoolToBorderColor}}"
+                   BackgroundColor="{StaticResource Surface}">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ChangeLanguageCommand}" CommandParameter="Русский" />
+                </Frame.GestureRecognizers>
+                <Grid ColumnDefinitions="Auto,*,Auto" Padding="16" HeightRequest="64">
+                    <Label Grid.Column="0" Text="🇷🇺" FontSize="26" VerticalOptions="Center" Margin="0,0,12,0" />
+                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                        <Label Text="Русский" FontSize="15" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                        <Label Text="Russian" FontSize="11" TextColor="{StaticResource TextSecondary}" />
+                    </VerticalStackLayout>
+                    <Label Grid.Column="2" Text="✓" FontSize="20" FontAttributes="Bold" TextColor="{StaticResource BluePrimary}"
+                           IsVisible="{Binding IsRussianSelected}" VerticalOptions="Center" />
+                </Grid>
+            </Frame>
+
+            <!-- Română Card -->
+            <Frame Padding="0" HasShadow="False" CornerRadius="12"
+                   BorderColor="{Binding IsRomanianSelected, Converter={StaticResource BoolToBorderColor}}"
+                   BackgroundColor="{StaticResource Surface}">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ChangeLanguageCommand}" CommandParameter="Română" />
+                </Frame.GestureRecognizers>
+                <Grid ColumnDefinitions="Auto,*,Auto" Padding="16" HeightRequest="64">
+                    <Label Grid.Column="0" Text="🇷🇴" FontSize="26" VerticalOptions="Center" Margin="0,0,12,0" />
+                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                        <Label Text="Română" FontSize="15" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                        <Label Text="Romanian" FontSize="11" TextColor="{StaticResource TextSecondary}" />
+                    </VerticalStackLayout>
+                    <Label Grid.Column="2" Text="✓" FontSize="20" FontAttributes="Bold" TextColor="{StaticResource BluePrimary}"
+                           IsVisible="{Binding IsRomanianSelected}" VerticalOptions="Center" />
+                </Grid>
+            </Frame>
+
+            <!-- English Card -->
+            <Frame Padding="0" HasShadow="False" CornerRadius="12"
+                   BorderColor="{Binding IsEnglishSelected, Converter={StaticResource BoolToBorderColor}}"
+                   BackgroundColor="{StaticResource Surface}">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ChangeLanguageCommand}" CommandParameter="English" />
+                </Frame.GestureRecognizers>
+                <Grid ColumnDefinitions="Auto,*,Auto" Padding="16" HeightRequest="64">
+                    <Label Grid.Column="0" Text="🇬🇧" FontSize="26" VerticalOptions="Center" Margin="0,0,12,0" />
+                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                        <Label Text="English" FontSize="15" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                        <Label Text="English" FontSize="11" TextColor="{StaticResource TextSecondary}" />
+                    </VerticalStackLayout>
+                    <Label Grid.Column="2" Text="✓" FontSize="20" FontAttributes="Bold" TextColor="{StaticResource BluePrimary}"
+                           IsVisible="{Binding IsEnglishSelected}" VerticalOptions="Center" />
+                </Grid>
+            </Frame>
+        </VerticalStackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>

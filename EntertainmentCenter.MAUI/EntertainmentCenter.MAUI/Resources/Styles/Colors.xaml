@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- === ОСНОВНЫЕ ЦВЕТА === -->
+
+    <!-- Жёлтый — шапки, акценты, выделения -->
+    <Color x:Key="YellowPrimary">#FBBF24</Color>
+    <Color x:Key="YellowLight">#FEF3C7</Color>
+    <Color x:Key="YellowDark">#D97706</Color>
+    <Color x:Key="YellowText">#92400E</Color>
+
+    <!-- Синий — кнопки действий, ссылки, зоны -->
+    <Color x:Key="BluePrimary">#2563EB</Color>
+    <Color x:Key="BlueLight">#DBEAFE</Color>
+    <Color x:Key="BlueDark">#1E3A8A</Color>
+    <Color x:Key="BlueText">#1E3A8A</Color>
+
+    <!-- Нейтральные (тёплые, не холодные серые) -->
+    <Color x:Key="Background">#F5F3EE</Color>
+    <Color x:Key="Surface">#FFFFFF</Color>
+    <Color x:Key="Border">#E8E5DD</Color>
+    <Color x:Key="TextPrimary">#1C1917</Color>
+    <Color x:Key="TextSecondary">#8B8680</Color>
+    <Color x:Key="TextHint">#B8B3AC</Color>
+
+    <!-- Семантика -->
+    <Color x:Key="Success">#15803D</Color>
+    <Color x:Key="SuccessBackground">#DCFCE7</Color>
+    <Color x:Key="Danger">#DC2626</Color>
+    <Color x:Key="DangerBackground">#FEE2E2</Color>
+    <Color x:Key="Warning">#D97706</Color>
+    <Color x:Key="WarningBackground">#FEF3C7</Color>
+
+</ResourceDictionary>

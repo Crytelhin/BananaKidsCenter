@@ -1,0 +1,637 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="0" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="LoginTitle" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
+  <data name="Reception" xml:space="preserve">
+    <value>Reception</value>
+  </data>
+  <data name="ReceptionSub" xml:space="preserve">
+    <value>Register clients</value>
+  </data>
+  <data name="EntryControl" xml:space="preserve">
+    <value>Entry Control</value>
+  </data>
+  <data name="EntryControlSub" xml:space="preserve">
+    <value>Verify entry to zones</value>
+  </data>
+  <data name="Admin" xml:space="preserve">
+    <value>Administrator</value>
+  </data>
+  <data name="AdminSub" xml:space="preserve">
+    <value>Manage Banana Kids</value>
+  </data>
+  <data name="SearchPlaceholder" xml:space="preserve">
+    <value>Search by name or card...</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="NoActiveClients" xml:space="preserve">
+    <value>No active clients</value>
+  </data>
+  <data name="Remaining" xml:space="preserve">
+    <value>Remaining</value>
+  </data>
+  <data name="Vip" xml:space="preserve">
+    <value>VIP</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="AddClient" xml:space="preserve">
+    <value>Add Client</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>Full Name</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="Card" xml:space="preserve">
+    <value>Card</value>
+  </data>
+  <data name="Cardless" xml:space="preserve">
+    <value>Register without card</value>
+  </data>
+  <data name="Scan" xml:space="preserve">
+    <value>Scan</value>
+  </data>
+  <data name="Zone" xml:space="preserve">
+    <value>Zone</value>
+  </data>
+  <data name="Tariff" xml:space="preserve">
+    <value>Tariff</value>
+  </data>
+  <data name="Duration" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="Promotion" xml:space="preserve">
+    <value>Promotion (optional)</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total:</value>
+  </data>
+  <data name="MarketingConsent" xml:space="preserve">
+    <value>Marketing consent</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="TimeRemaining" xml:space="preserve">
+    <value>Time remaining</value>
+  </data>
+  <data name="SessionActive" xml:space="preserve">
+    <value>✓ Session active</value>
+  </data>
+  <data name="SessionPending" xml:space="preserve">
+    <value>⏰ Pending entry</value>
+  </data>
+  <data name="SessionExpired" xml:space="preserve">
+    <value>✗ Session completed</value>
+  </data>
+  <data name="ExpiresAt" xml:space="preserve">
+    <value>Expires at</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="EndSession" xml:space="preserve">
+    <value>End Session</value>
+  </data>
+  <data name="ExtendSession" xml:space="preserve">
+    <value>Extend Session</value>
+  </data>
+  <data name="ConfirmExtension" xml:space="preserve">
+    <value>Confirm Extension</value>
+  </data>
+  <data name="DailyReport" xml:space="preserve">
+    <value>Download Reports</value>
+  </data>
+  <data name="DownloadCsv" xml:space="preserve">
+    <value>Download CSV Report</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Log Out</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>REPORTS</value>
+  </data>
+  <data name="Management" xml:space="preserve">
+    <value>MANAGEMENT</value>
+  </data>
+  <data name="ZonesAndTariffs" xml:space="preserve">
+    <value>Zones &amp; Tariffs</value>
+  </data>
+  <data name="Promotions" xml:space="preserve">
+    <value>Promotions</value>
+  </data>
+  <data name="Notifications" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="ClientHistory" xml:space="preserve">
+    <value>Client History</value>
+  </data>
+  <data name="ServerConnection" xml:space="preserve">
+    <value>Server Connection</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="LanguageWarning" xml:space="preserve">
+    <value>Restart app to apply language settings</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="SelectLanguage" xml:space="preserve">
+    <value>Select Language</value>
+  </data>
+  <data name="RestartApp" xml:space="preserve">
+    <value>Restart</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Success</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="HoursUnit" xml:space="preserve">
+    <value>h</value>
+  </data>
+  <data name="MinutesUnit" xml:space="preserve">
+    <value>m</value>
+  </data>
+  <data name="Lei" xml:space="preserve">
+    <value>lei</value>
+  </data>
+  <data name="HoursPlaceholder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="MinutesPlaceholder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="RegistrationMode" xml:space="preserve">
+    <value>Registration Mode</value>
+  </data>
+  <data name="PhysicalCard" xml:space="preserve">
+    <value>Physical Card</value>
+  </data>
+  <data name="CardlessMode" xml:space="preserve">
+    <value>No Card</value>
+  </data>
+  <data name="CardCode" xml:space="preserve">
+    <value>Card Number</value>
+  </data>
+  <data name="Barcode" xml:space="preserve">
+    <value>Barcode</value>
+  </data>
+  <data name="NewClient" xml:space="preserve">
+    <value>New Client</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Entry" xml:space="preserve">
+    <value>Entry</value>
+  </data>
+  <data name="ExtendPriceLabel" xml:space="preserve">
+    <value>Extension cost:</value>
+  </data>
+  <data name="VisitsToday" xml:space="preserve">
+    <value>Visits Today</value>
+  </data>
+  <data name="ActiveNow" xml:space="preserve">
+    <value>Active Now</value>
+  </data>
+  <data name="RevenueToday" xml:space="preserve">
+    <value>Revenue Today</value>
+  </data>
+  <data name="EnterPin" xml:space="preserve">
+    <value>Enter PIN</value>
+  </data>
+  <data name="NameOrPhone" xml:space="preserve">
+    <value>Name or phone</value>
+  </data>
+  <data name="Today" xml:space="preserve">
+    <value>Today</value>
+  </data>
+  <data name="Week" xml:space="preserve">
+    <value>Week</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="SessionsNotFound" xml:space="preserve">
+    <value>Sessions not found</value>
+  </data>
+  <data name="EnterCardCodePlaceholder" xml:space="preserve">
+    <value>Enter card code...</value>
+  </data>
+  <data name="ActiveSessions" xml:space="preserve">
+    <value>Active sessions</value>
+  </data>
+  <data name="NoActiveSessions" xml:space="preserve">
+    <value>No active sessions</value>
+  </data>
+  <data name="ExpirationWarnings" xml:space="preserve">
+    <value>Expiration warnings</value>
+  </data>
+  <data name="ShowNotificationWhenTimeRunningOut" xml:space="preserve">
+    <value>Show notification when client time is running out</value>
+  </data>
+  <data name="HowManyMinutesBeforeEnd" xml:space="preserve">
+    <value>How many minutes before the end</value>
+  </data>
+  <data name="NotificationWarningStringFormat" xml:space="preserve">
+    <value>Notification will appear {0} min. before the end of the session on the registration page</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="PromotionName" xml:space="preserve">
+    <value>Promotion name</value>
+  </data>
+  <data name="PromotionNamePlaceholder" xml:space="preserve">
+    <value>Wednesday discount</value>
+  </data>
+  <data name="DiscountTypeLabel" xml:space="preserve">
+    <value>Discount type</value>
+  </data>
+  <data name="Percent" xml:space="preserve">
+    <value>Percent</value>
+  </data>
+  <data name="FixAmount" xml:space="preserve">
+    <value>Fixed amount</value>
+  </data>
+  <data name="DiscountSize" xml:space="preserve">
+    <value>Discount value</value>
+  </data>
+  <data name="DayOfAction" xml:space="preserve">
+    <value>Day of action</value>
+  </data>
+  <data name="AnyDay" xml:space="preserve">
+    <value>Any day</value>
+  </data>
+  <data name="Mon" xml:space="preserve">
+    <value>Mon</value>
+  </data>
+  <data name="Tue" xml:space="preserve">
+    <value>Tue</value>
+  </data>
+  <data name="Wed" xml:space="preserve">
+    <value>Wed</value>
+  </data>
+  <data name="Thu" xml:space="preserve">
+    <value>Thu</value>
+  </data>
+  <data name="Fri" xml:space="preserve">
+    <value>Fri</value>
+  </data>
+  <data name="Sat" xml:space="preserve">
+    <value>Sat</value>
+  </data>
+  <data name="Sun" xml:space="preserve">
+    <value>Sun</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="SavePromotion" xml:space="preserve">
+    <value>Save promotion</value>
+  </data>
+  <data name="AddPromotion" xml:space="preserve">
+    <value>+ Add promotion</value>
+  </data>
+  <data name="NoPromotionsAdded" xml:space="preserve">
+    <value>No promotions added</value>
+  </data>
+  <data name="ServerIpOrName" xml:space="preserve">
+    <value>Server IP or name</value>
+  </data>
+  <data name="ServerIpExample" xml:space="preserve">
+    <value>For example: http://KorsysBook.local:5000 or http://192.168.1.100:5000</value>
+  </data>
+  <data name="Connect" xml:space="preserve">
+    <value>Connect</value>
+  </data>
+  <data name="ZoneNameLabel" xml:space="preserve">
+    <value>Zone name</value>
+  </data>
+  <data name="ZoneNamePlaceholder" xml:space="preserve">
+    <value>Play zone</value>
+  </data>
+  <data name="Tariffs" xml:space="preserve">
+    <value>Tariffs</value>
+  </data>
+  <data name="AddTariff" xml:space="preserve">
+    <value>+ Add tariff</value>
+  </data>
+  <data name="NoTariffsAdded" xml:space="preserve">
+    <value>No tariffs added</value>
+  </data>
+  <data name="TariffNamePlaceholder" xml:space="preserve">
+    <value>Tariff name</value>
+  </data>
+  <data name="PriceLeiLabel" xml:space="preserve">
+    <value>Price (lei)</value>
+  </data>
+  <data name="SaveZone" xml:space="preserve">
+    <value>Save zone</value>
+  </data>
+  <data name="AddZone" xml:space="preserve">
+    <value>+ Add zone</value>
+  </data>
+  <data name="NoZonesAdded" xml:space="preserve">
+    <value>No zones added</value>
+  </data>
+  <data name="TariffCountFormat" xml:space="preserve">
+    <value>{0} tariffs</value>
+  </data>
+  <data name="NoConnectionToServer" xml:space="preserve">
+    <value>No connection to server</value>
+  </data>
+  <data name="ServerError" xml:space="preserve">
+    <value>Server error, please try again</value>
+  </data>
+  <data name="Saved" xml:space="preserve">
+    <value>Saved</value>
+  </data>
+  <data name="NotificationSettingsSaved" xml:space="preserve">
+    <value>Notification settings saved</value>
+  </data>
+  <data name="EnterPromotionName" xml:space="preserve">
+    <value>Enter promotion name</value>
+  </data>
+  <data name="EnterDiscountSize" xml:space="preserve">
+    <value>Enter discount size</value>
+  </data>
+  <data name="DeactivatePromotionConfirm" xml:space="preserve">
+    <value>Deactivate promotion "{0}"?</value>
+  </data>
+  <data name="DeleteZoneConfirm" xml:space="preserve">
+    <value>Delete zone "{0}" and all its tariffs completely? Active sessions will be terminated.</value>
+  </data>
+  <data name="ClientRegisteredSuccess" xml:space="preserve">
+    <value>Client "{0}" registered successfully!</value>
+  </data>
+  <data name="NoReportData" xml:space="preserve">
+    <value>No report data for this date</value>
+  </data>
+  <data name="ReportTitleFormat" xml:space="preserve">
+    <value>Report for {0:dd.MM.yyyy}</value>
+  </data>
+  <data name="ExportReportError" xml:space="preserve">
+    <value>Failed to export report: {0}</value>
+  </data>
+  <data name="ExitConfirmTitle" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="ExitConfirmMessage" xml:space="preserve">
+    <value>Exit admin panel?</value>
+  </data>
+  <data name="LogoutButton" xml:space="preserve">
+    <value>Log out</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="EndSessionConfirmMessage" xml:space="preserve">
+    <value>End session for client "{0}"?</value>
+  </data>
+  <data name="SelectTariffForExtension" xml:space="preserve">
+    <value>Select tariff for extension</value>
+  </data>
+  <data name="ExtendSessionError" xml:space="preserve">
+    <value>Failed to extend session</value>
+  </data>
+  <data name="ExtendSessionSuccess" xml:space="preserve">
+    <value>Session extended successfully!</value>
+  </data>
+  <data name="ExtendSessionErrorFormat" xml:space="preserve">
+    <value>Error during extension: {0}</value>
+  </data>
+  <data name="DeactivatePromotionTitle" xml:space="preserve">
+    <value>Deactivate</value>
+  </data>
+  <data name="EnterZoneName" xml:space="preserve">
+    <value>Enter zone name</value>
+  </data>
+  <data name="EnterTariffNameFormat" xml:space="preserve">
+    <value>Tariff #{0}: enter name</value>
+  </data>
+  <data name="EnterTariffDurationFormat" xml:space="preserve">
+    <value>Tarif "{0}": enter duration</value>
+  </data>
+  <data name="EnterTariffPriceFormat" xml:space="preserve">
+    <value>Tarif "{0}": enter price</value>
+  </data>
+  <data name="CardNotFound" xml:space="preserve">
+    <value>Card not found</value>
+  </data>
+  <data name="EntryAllowed" xml:space="preserve">
+    <value>Entry allowed!</value>
+  </data>
+  <data name="FillFullName" xml:space="preserve">
+    <value>Enter client full name</value>
+  </data>
+  <data name="FillPhone" xml:space="preserve">
+    <value>Enter phone number</value>
+  </data>
+  <data name="FillCard" xml:space="preserve">
+    <value>Scan or enter card number</value>
+  </data>
+  <data name="SelectTariff" xml:space="preserve">
+    <value>Select tariff</value>
+  </data>
+  <data name="UrlRequired" xml:space="preserve">
+    <value>URL is required</value>
+  </data>
+  <data name="InvalidUrl" xml:space="preserve">
+    <value>Invalid URL</value>
+  </data>
+  <data name="UrlSchemeRequired" xml:space="preserve">
+    <value>URL must start with http:// or https://</value>
+  </data>
+  <data name="ConnectingProgress" xml:space="preserve">
+    <value>Checking…</value>
+  </data>
+  <data name="ConnectedStatus" xml:space="preserve">
+    <value>Connected</value>
+  </data>
+  <data name="DisconnectedStatus" xml:space="preserve">
+    <value>Disconnected</value>
+  </data>
+  <data name="TimeoutStatus" xml:space="preserve">
+    <value>Timeout</value>
+  </data>
+  <data name="ServerSavedRestartMessage" xml:space="preserve">
+    <value>Settings saved. Restart the app to apply.</value>
+  </data>
+  <data name="ServerErrorMessageFormat" xml:space="preserve">
+    <value>Server responded: {0}</value>
+  </data>
+  <data name="ServerConnectErrorPlaceholder" xml:space="preserve">
+    <value>Could not connect. Check IP and port.</value>
+  </data>
+  <data name="ServerTimeoutPlaceholder" xml:space="preserve">
+    <value>Connection timeout. Check IP and port.</value>
+  </data>
+  <data name="Hours" xml:space="preserve">
+    <value>Hours</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>Minutes</value>
+  </data>
+  <data name="DeleteTitle" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DeleteButton" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="PointCameraAtBarcode" xml:space="preserve">
+    <value>Point camera at the barcode</value>
+  </data>
+  <data name="BarcodeScanned" xml:space="preserve">
+    <value>✓ Scanned</value>
+  </data>
+  <data name="SecondsUnit" xml:space="preserve">
+    <value>s</value>
+  </data>
+  <data name="ServerErrorWithDetails" xml:space="preserve">
+    <value>Server error: {0}</value>
+  </data>
+  <data name="SessionNotFound" xml:space="preserve">
+    <value>Session not found</value>
+  </data>
+  <data name="PendingEntry" xml:space="preserve">
+    <value>Pending entry</value>
+  </data>
+  <data name="TimeExpired" xml:space="preserve">
+    <value>Time expired</value>
+  </data>
+  <data name="EndButton" xml:space="preserve">
+    <value>End</value>
+  </data>
+  <data name="ClientNotFound" xml:space="preserve">
+    <value>Client not found</value>
+  </data>
+  <data name="ClientHasNoActiveSession" xml:space="preserve">
+    <value>Client has no active session</value>
+  </data>
+  <data name="SessionCompleted" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="CardAlreadyRegistered" xml:space="preserve">
+    <value>Card is already registered to another client</value>
+  </data>
+  <data name="ClientDefaultName" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="LessThanMinute" xml:space="preserve">
+    <value>less than a minute</value>
+  </data>
+  <data name="MinuteShort" xml:space="preserve">
+    <value>min.</value>
+  </data>
+  <data name="NotificationTitle" xml:space="preserve">
+    <value>⏰ Time is running out</value>
+  </data>
+  <data name="NotificationBodyFormat" xml:space="preserve">
+    <value>Client "{0}" time is running out in {1}</value>
+  </data>
+  <data name="NotificationChannelName" xml:space="preserve">
+    <value>Time reminders</value>
+  </data>
+  <data name="NotificationChannelDescription" xml:space="preserve">
+    <value>Notifications about expiring client sessions</value>
+  </data>
+  <data name="NoCard" xml:space="preserve">
+    <value>No card</value>
+  </data>
+  <data name="ReportLanguageLabel" xml:space="preserve">
+    <value>Report language</value>
+  </data>
+  <data name="ReportPeriodLabel" xml:space="preserve">
+    <value>Period</value>
+  </data>
+  <data name="ReportDay" xml:space="preserve">
+    <value>Day</value>
+  </data>
+  <data name="ReportWeek" xml:space="preserve">
+    <value>Week</value>
+  </data>
+  <data name="ReportMonth" xml:space="preserve">
+    <value>Month</value>
+  </data>
+  <data name="ReportYear" xml:space="preserve">
+    <value>Year</value>
+  </data>
+</root>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EntertainmentCenter.ViewModels"
+             xmlns:models="clr-namespace:EntertainmentCenter.Models"
+             xmlns:strings="clr-namespace:EntertainmentCenter.Resources.Strings"
+             x:Class="EntertainmentCenter.Views.ReceptionPage"
+             x:DataType="vm:ReceptionViewModel"
+             Title="{x:Static strings:AppResources.Reception}">
+
+    <Shell.TitleView>
+        <Grid ColumnDefinitions="Auto,*,Auto" Padding="0,0,8,0">
+            <Button Grid.Column="0" Text="⚙"
+                    Style="{StaticResource ButtonText}" TextColor="{StaticResource YellowText}"
+                    FontSize="20" WidthRequest="44"
+                    Command="{Binding NavigateToSettingsCommand}" />
+            <Label Grid.Column="1" Text="{x:Static strings:AppResources.Reception}" FontSize="16" FontAttributes="Bold"
+                   TextColor="{StaticResource YellowText}" HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+            <Button Grid.Column="2" Text="+"
+                    Style="{StaticResource ButtonText}" TextColor="{StaticResource YellowText}"
+                    FontSize="22" WidthRequest="44"
+                    Command="{Binding NavigateToAddClientCommand}" />
+        </Grid>
+    </Shell.TitleView>
+
+    <Grid RowDefinitions="Auto,Auto,*" Padding="16" RowSpacing="12">
+
+        <!-- Connection Status Banner -->
+        <Frame Grid.Row="0" CornerRadius="8" Padding="12,8" HasShadow="False"
+               BorderColor="{Binding ConnectionStatusColor}"
+               BackgroundColor="{Binding ConnectionStatusBgColor}"
+               IsVisible="{Binding ShowConnectionStatusBanner}">
+            <HorizontalStackLayout Spacing="8">
+                <BoxView WidthRequest="8" HeightRequest="8" CornerRadius="4"
+                         Color="{Binding ConnectionStatusColor}" VerticalOptions="Center" />
+                <Label Text="{Binding ConnectionStatusText}" FontSize="12"
+                       TextColor="{Binding ConnectionStatusColor}" VerticalOptions="Center" />
+            </HorizontalStackLayout>
+        </Frame>
+
+        <!-- Search bar -->
+        <Frame Grid.Row="1" Style="{StaticResource CardStyle}" Padding="6">
+            <Grid ColumnDefinitions="*,Auto">
+                <Entry Grid.Column="0"
+                       Text="{Binding SearchQuery}"
+                       Placeholder="{x:Static strings:AppResources.SearchPlaceholder}"
+                       ReturnType="Search"
+                       ReturnCommand="{Binding SearchCommand}" />
+                <Button Grid.Column="1"
+                       Text="{x:Static strings:AppResources.Search}"
+                       Command="{Binding SearchCommand}"
+                       Style="{StaticResource ButtonSecondary}"
+                       HeightRequest="44" FontSize="13"
+                       Margin="4,0" />
+            </Grid>
+        </Frame>
+
+        <!-- Loading -->
+        <ActivityIndicator Grid.Row="2"
+                           IsRunning="{Binding IsBusy}"
+                           IsVisible="{Binding IsBusy}"
+                           VerticalOptions="Start"
+                           Margin="0,20,0,0" />
+
+        <!-- Search results (visible only during search) -->
+        <CollectionView Grid.Row="2"
+                        ItemsSource="{Binding Clients}"
+                        IsVisible="{Binding IsSearchActive}"
+                        EmptyView="{x:Static strings:AppResources.NoActiveClients}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Client">
+                    <Frame Style="{StaticResource CardStyle}">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ReceptionViewModel}}, Path=NavigateToClientDetailCommand}"
+                                CommandParameter="{Binding .}" />
+                        </Frame.GestureRecognizers>
+                        <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto">
+                            <Label Grid.Row="0" Grid.Column="0"
+                                   Text="{Binding FullName}"
+                                   FontSize="15" FontAttributes="Bold"
+                                   TextColor="{StaticResource TextPrimary}" />
+                            <Label Grid.Row="0" Grid.Column="1"
+                                   Text="{Binding DisplayCardCode}"
+                                   FontSize="12"
+                                   TextColor="{StaticResource BlueText}"
+                                   VerticalOptions="Center" />
+                            <Label Grid.Row="1" Grid.ColumnSpan="2"
+                                   Text="{Binding Phone}"
+                                   Style="{StaticResource SubLabel}" />
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Active sessions (default view) -->
+        <CollectionView Grid.Row="2"
+                        ItemsSource="{Binding ActiveSessions}"
+                        IsVisible="{Binding IsSearchActive, Converter={StaticResource InvertBool}}"
+                        EmptyView="{x:Static strings:AppResources.NoActiveClients}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="vm:SessionDisplay">
+                    <Frame Style="{StaticResource CardStyle}">
+                        <Frame.Triggers>
+                            <DataTrigger TargetType="Frame" Binding="{Binding IsWarning}" Value="True">
+                                <Setter Property="BackgroundColor" Value="{StaticResource WarningBackground}" />
+                            </DataTrigger>
+                        </Frame.Triggers>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ReceptionViewModel}}, Path=NavigateToClientDetailCommand}"
+                                CommandParameter="{Binding .}" />
+                        </Frame.GestureRecognizers>
+                        <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,Auto">
+
+                            <!-- Client name -->
+                            <Label Grid.Row="0" Grid.Column="0"
+                                   Text="{Binding ClientName}"
+                                   Style="{StaticResource ClientNameLabel}" />
+
+                            <!-- Zone badge -->
+                            <Frame Grid.Row="0" Grid.Column="1" Style="{StaticResource ZoneBadge}">
+                                <Label Text="{Binding ZoneName}"
+                                       FontSize="11"
+                                       TextColor="{StaticResource BlueText}" />
+                            </Frame>
+
+                            <!-- Phone -->
+                            <Label Grid.Row="1" Grid.ColumnSpan="2"
+                                   Text="{Binding Phone}"
+                                   Style="{StaticResource SubLabel}" />
+
+                            <!-- Timer row -->
+                            <Grid Grid.Row="2" Grid.ColumnSpan="2"
+                                  ColumnDefinitions="*,Auto" Margin="0,6,0,0">
+                                <Label Text="{x:Static strings:AppResources.Remaining}"
+                                       Style="{StaticResource SubLabel}"
+                                       VerticalOptions="Center" />
+                                <Frame Grid.Column="1" Style="{StaticResource TimerNormal}">
+                                    <Label Text="{Binding TimeRemaining}"
+                                           FontSize="13" FontAttributes="Bold"
+                                           TextColor="{StaticResource YellowText}" />
+                                </Frame>
+                            </Grid>
+
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>

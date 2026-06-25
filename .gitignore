@@ -1,0 +1,47 @@
+# =========================================================================
+# Standard .NET / Visual Studio ignores
+# =========================================================================
+## Build outputs
+[Bb]in/
+[Oo]bj/
+[Pp]ublish/
+
+## IDE cache and settings
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# =========================================================================
+# Project-specific ignores (MothersProject / EntertainmentCenter)
+# =========================================================================
+## Decompiled APK workspace (contains 10k+ files)
+TargetApk/
+
+## Logs and diagnostics
+logcat.txt
+logcat_utf8.txt
+logs.txt
+cyrillic_matches.txt
+cs_cyrillic_matches.txt
+
+## Local publish output folders
+publish_output/
+publish_api/
+api_publish/
+
+## Claude / Agent caches
+.claude/
+.gemini/
+.agents/
+CLAUDE.md
+Docs/Plans/
+/task.md
+/walkthrough.md

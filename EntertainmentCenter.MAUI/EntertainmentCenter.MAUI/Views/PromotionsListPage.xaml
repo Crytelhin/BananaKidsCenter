@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:EntertainmentCenter.ViewModels"
+    xmlns:strings="clr-namespace:EntertainmentCenter.Resources.Strings"
+    x:Class="EntertainmentCenter.Views.PromotionsListPage"
+    x:DataType="vm:PromotionsListViewModel"
+    Title="{x:Static strings:AppResources.Promotions}"
+    BackgroundColor="{StaticResource Background}">
+
+    <Grid RowDefinitions="Auto,Auto,*" Padding="16" RowSpacing="12">
+
+        <ActivityIndicator Grid.Row="0" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
+                           HorizontalOptions="Center" Margin="0,8" />
+
+        <Button Grid.Row="1" Text="{x:Static strings:AppResources.AddPromotion}" Style="{StaticResource ButtonPrimary}"
+                Command="{Binding AddPromotionCommand}" />
+
+        <CollectionView Grid.Row="2" ItemsSource="{Binding Promotions}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="vm:PromotionDisplay">
+                    <Frame Style="{StaticResource CardStyle}">
+                        <Grid ColumnDefinitions="Auto,*,Auto,Auto" ColumnSpacing="10">
+                            <!-- Active Toggle -->
+                            <Switch IsToggled="{Binding IsActive}" ThumbColor="White"
+                                    OnColor="{StaticResource YellowPrimary}" />
+                            <!-- Name + discount + day -->
+                            <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                                <Label Text="{Binding Name}" FontSize="16" FontAttributes="Bold"
+                                       TextColor="{StaticResource TextPrimary}" />
+                                <HorizontalStackLayout Spacing="8">
+                                    <Frame Style="{StaticResource ZoneBadge}">
+                                        <Label Text="{Binding DiscountLabel}" FontSize="11"
+                                               TextColor="{StaticResource BlueText}" />
+                                    </Frame>
+                                    <Label Text="{Binding DayLabel}" FontSize="13"
+                                           TextColor="{StaticResource TextSecondary}" VerticalOptions="Center" />
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+
+                            <Button Grid.Column="2" Text="✏" Style="{StaticResource ButtonText}"
+                                    FontSize="18" WidthRequest="44"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PromotionsListViewModel}}, Path=EditPromotionCommand}"
+                                    CommandParameter="{Binding .}" />
+                            <Button Grid.Column="3" Text="🗑" Style="{StaticResource ButtonText}"
+                                    FontSize="18" WidthRequest="44"
+                                    TextColor="{StaticResource Danger}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PromotionsListViewModel}}, Path=DeletePromotionCommand}"
+                                    CommandParameter="{Binding .}" />
+                        </Grid>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:PromotionsListViewModel}}, Path=EditPromotionCommand}"
+                                CommandParameter="{Binding .}" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+            <CollectionView.EmptyView>
+                <Label Text="{x:Static strings:AppResources.NoPromotionsAdded}" Style="{StaticResource SubLabel}"
+                       HorizontalOptions="Center" Margin="0,40" />
+            </CollectionView.EmptyView>
+        </CollectionView>
+    </Grid>
+</ContentPage>

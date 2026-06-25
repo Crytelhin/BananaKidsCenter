@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EntertainmentCenter.ViewModels"
+             xmlns:strings="clr-namespace:EntertainmentCenter.Resources.Strings"
+             x:Class="EntertainmentCenter.Views.EntryCheckPage"
+             x:DataType="vm:EntryCheckViewModel"
+             Title="{x:Static strings:AppResources.EntryControl}">
+
+    <Shell.TitleView>
+        <Grid ColumnDefinitions="Auto,*" Padding="0,0,8,0">
+            <Button Grid.Column="0" Text="⚙"
+                    Style="{StaticResource ButtonText}" TextColor="{StaticResource YellowText}"
+                    FontSize="20" WidthRequest="44"
+                    Command="{Binding NavigateToSettingsCommand}" />
+            <Label Grid.Column="1" Text="{x:Static strings:AppResources.EntryControl}" FontSize="16" FontAttributes="Bold"
+                   TextColor="{StaticResource YellowText}" HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+        </Grid>
+    </Shell.TitleView>
+
+    <Grid RowDefinitions="Auto,Auto,Auto,*" Padding="16" RowSpacing="10">
+
+        <!-- Connection Status Banner -->
+        <Frame Grid.Row="0" CornerRadius="8" Padding="12,8" HasShadow="False"
+               BorderColor="{Binding ConnectionStatusColor}"
+               BackgroundColor="{Binding ConnectionStatusBgColor}"
+               IsVisible="{Binding ShowConnectionStatusBanner}">
+            <HorizontalStackLayout Spacing="8">
+                <BoxView WidthRequest="8" HeightRequest="8" CornerRadius="4"
+                         Color="{Binding ConnectionStatusColor}" VerticalOptions="Center" />
+                <Label Text="{Binding ConnectionStatusText}" FontSize="12"
+                       TextColor="{Binding ConnectionStatusColor}" VerticalOptions="Center" />
+            </HorizontalStackLayout>
+        </Frame>
+
+        <!-- Code entry — compact -->
+        <Grid Grid.Row="1" ColumnDefinitions="*,Auto,Auto" ColumnSpacing="6">
+            <Entry Grid.Column="0"
+                   Text="{Binding ScannedCode}"
+                   Placeholder="{x:Static strings:AppResources.EnterCardCodePlaceholder}"
+                   ReturnType="Done"
+                   ReturnCommand="{Binding CheckManualEntryCommand}"
+                   HeightRequest="44" />
+            <Button Grid.Column="1"
+                    Text="{x:Static strings:AppResources.Search}"
+                    Command="{Binding CheckManualEntryCommand}"
+                    Style="{StaticResource ButtonSecondary}"
+                    HeightRequest="44" FontSize="13" Padding="12,0" />
+            <Button Grid.Column="2"
+                    Text="📷"
+                    Command="{Binding OpenScannerCommand}"
+                    Style="{StaticResource ButtonSecondary}"
+                    HeightRequest="44" WidthRequest="48" FontSize="18" Padding="0" />
+        </Grid>
+
+        <!-- Loading -->
+        <ActivityIndicator Grid.Row="2"
+                           IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
+                           HorizontalOptions="Center" />
+
+        <!-- Results + Active sessions -->
+        <ScrollView Grid.Row="3">
+            <VerticalStackLayout Spacing="10">
+
+                <!-- Status banner — only shown after a scan result -->
+                <Frame Style="{StaticResource StatusSuccess}"
+                       IsVisible="{Binding IsAllowed}">
+                    <Label Text="{Binding StatusMessage}" FontSize="18" FontAttributes="Bold"
+                           TextColor="{StaticResource Success}" HorizontalTextAlignment="Center" />
+                </Frame>
+
+                <Frame Style="{StaticResource StatusDanger}"
+                       IsVisible="{Binding ShowDenied}">
+                    <Label Text="{Binding StatusMessage}" FontSize="18" FontAttributes="Bold"
+                           TextColor="{StaticResource Danger}" HorizontalTextAlignment="Center" />
+                </Frame>
+
+                <!-- Client info card (after scan) -->
+                <Frame Style="{StaticResource CardStyle}" Padding="16"
+                       IsVisible="{Binding HasResult}">
+                    <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,*" RowSpacing="8" ColumnSpacing="8">
+                        <Label Grid.Row="0" Grid.Column="0" Text="{x:Static strings:AppResources.FullName}" Style="{StaticResource SubLabel}" />
+                        <Label Grid.Row="0" Grid.Column="1" Text="{Binding ClientName}"
+                               FontSize="15" TextColor="{StaticResource TextPrimary}" HorizontalOptions="End" />
+
+                        <Label Grid.Row="1" Grid.Column="0" Text="{x:Static strings:AppResources.Zone}" Style="{StaticResource SubLabel}" />
+                        <Label Grid.Row="1" Grid.Column="1" Text="{Binding ZoneName}"
+                               FontSize="15" TextColor="{StaticResource TextPrimary}" HorizontalOptions="End" />
+
+                        <Label Grid.Row="2" Grid.Column="0" Text="{x:Static strings:AppResources.Remaining}" Style="{StaticResource SubLabel}" />
+                        <Label Grid.Row="2" Grid.Column="1" Text="{Binding TimeRemaining}"
+                               FontSize="15" FontAttributes="Bold" TextColor="{StaticResource BluePrimary}"
+                               HorizontalOptions="End" />
+                    </Grid>
+                </Frame>
+
+                <!-- Active sessions list -->
+                <Label Text="{x:Static strings:AppResources.ActiveSessions}" FontSize="14" FontAttributes="Bold"
+                       TextColor="{StaticResource TextSecondary}" Margin="0,6,0,0" />
+
+                <CollectionView ItemsSource="{Binding ActiveSessions}"
+                                HeightRequest="250">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="vm:SessionDisplay">
+                            <Frame Style="{StaticResource CardStyle}" Padding="12" Margin="0,3">
+                                <Frame.Triggers>
+                                    <DataTrigger TargetType="Frame" Binding="{Binding IsWarning}" Value="True">
+                                        <Setter Property="BackgroundColor" Value="{StaticResource WarningBackground}" />
+                                    </DataTrigger>
+                                </Frame.Triggers>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:EntryCheckViewModel}}, Path=NavigateToClientDetailCommand}"
+                                        CommandParameter="{Binding .}" />
+                                </Frame.GestureRecognizers>
+                                <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto">
+                                    <Label Grid.Row="0" Grid.Column="0"
+                                           Text="{Binding ClientName}"
+                                           Style="{StaticResource ClientNameLabel}" />
+                                    <Frame Grid.Row="0" Grid.Column="1" Style="{StaticResource ZoneBadge}">
+                                        <Label Text="{Binding ZoneName}" FontSize="11"
+                                               TextColor="{StaticResource BlueText}" />
+                                    </Frame>
+                                    <HorizontalStackLayout Grid.Row="1" Grid.ColumnSpan="2" Spacing="12">
+                                        <Label Text="{Binding TimeRemaining}" FontSize="13"
+                                               TextColor="{StaticResource YellowText}" FontAttributes="Bold" />
+                                        <Label Text="{Binding TariffLabel}" FontSize="13"
+                                               TextColor="{StaticResource TextSecondary}" />
+                                    </HorizontalStackLayout>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                    <CollectionView.EmptyView>
+                        <Label Text="{x:Static strings:AppResources.NoActiveSessions}" Style="{StaticResource SubLabel}"
+                               HorizontalOptions="Center" Margin="0,12" />
+                    </CollectionView.EmptyView>
+                </CollectionView>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
+</ContentPage>

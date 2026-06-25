@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EntertainmentCenter.ViewModels"
+             xmlns:strings="clr-namespace:EntertainmentCenter.Resources.Strings"
+             x:Class="EntertainmentCenter.Views.ZoneEditPage"
+             x:DataType="vm:ZoneEditViewModel"
+             Title="{x:Static strings:AppResources.Zone}"
+             BackgroundColor="{StaticResource Background}">
+
+    <Grid RowDefinitions="*,Auto">
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="16" Spacing="0">
+
+                <!-- Zone name -->
+                <Label Text="{x:Static strings:AppResources.ZoneNameLabel}" Style="{StaticResource SectionLabel}" />
+                <Frame Style="{StaticResource CardStyle}" Padding="4" Margin="0,0,0,8">
+                    <Entry Text="{Binding ZoneName}" Placeholder="{x:Static strings:AppResources.ZoneNamePlaceholder}" />
+                </Frame>
+
+                <!-- Active toggle -->
+                <Frame Style="{StaticResource CardStyle}" Padding="12" Margin="0,0,0,12">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Text="{x:Static strings:AppResources.Active}" FontSize="15" TextColor="{StaticResource TextPrimary}"
+                               VerticalOptions="Center" />
+                        <Switch Grid.Column="1" IsToggled="{Binding IsActive}"
+                                OnColor="{StaticResource YellowPrimary}" ThumbColor="White" />
+                    </Grid>
+                </Frame>
+
+                <Label Text="{x:Static strings:AppResources.Tariffs}" Style="{StaticResource SectionLabel}" />
+
+                <Button Text="{x:Static strings:AppResources.AddTariff}"
+                        Command="{Binding AddTariffCommand}"
+                        Style="{StaticResource ButtonSecondary}"
+                        HorizontalOptions="Fill"
+                        Margin="0,0,0,8" />
+
+                <Label Text="{x:Static strings:AppResources.NoTariffsAdded}" Style="{StaticResource SubLabel}"
+                       HorizontalOptions="Center" Margin="0,12"
+                       IsVisible="{Binding IsTariffsEmpty}" />
+
+                <VerticalStackLayout BindableLayout.ItemsSource="{Binding Tariffs}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="vm:TariffEdit">
+                            <Frame Style="{StaticResource CardStyle}">
+                                <VerticalStackLayout Spacing="8">
+                                    <Grid ColumnDefinitions="*,Auto">
+                                        <Entry Grid.Column="0"
+                                               Text="{Binding Label}"
+                                               Placeholder="{x:Static strings:AppResources.TariffNamePlaceholder}"
+                                               FontSize="15" FontAttributes="Bold" />
+                                        <Button Grid.Column="1"
+                                                Text="×"
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ZoneEditViewModel}}, Path=RemoveTariffCommand}"
+                                                CommandParameter="{Binding .}"
+                                                TextColor="{StaticResource Danger}"
+                                                BackgroundColor="Transparent"
+                                                FontSize="20"
+                                                WidthRequest="44" HeightRequest="44" />
+                                    </Grid>
+
+                                    <Grid ColumnDefinitions="*,*" ColumnSpacing="8">
+                                        <HorizontalStackLayout Grid.Column="0" Spacing="4">
+                                            <Label Text="{x:Static strings:AppResources.Hours}" VerticalOptions="Center"
+                                                   TextColor="{StaticResource TextSecondary}" FontSize="13" />
+                                            <Entry Text="{Binding DurationHours}"
+                                                   Keyboard="Numeric" HorizontalOptions="Fill" />
+                                        </HorizontalStackLayout>
+                                        <HorizontalStackLayout Grid.Column="1" Spacing="4">
+                                            <Label Text="{x:Static strings:AppResources.Minutes}" VerticalOptions="Center"
+                                                   TextColor="{StaticResource TextSecondary}" FontSize="13" />
+                                            <Entry Text="{Binding DurationMinutes}"
+                                                   Keyboard="Numeric" HorizontalOptions="Fill" />
+                                        </HorizontalStackLayout>
+                                    </Grid>
+
+                                    <HorizontalStackLayout Spacing="4">
+                                        <Label Text="{x:Static strings:AppResources.PriceLeiLabel}" VerticalOptions="Center"
+                                               TextColor="{StaticResource TextSecondary}" FontSize="13" />
+                                        <Entry Text="{Binding Price}"
+                                               Keyboard="Numeric" HorizontalOptions="Fill" />
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
+
+                <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
+                                   Margin="0,12" />
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Save button pinned to bottom -->
+        <Button Grid.Row="1" Text="{x:Static strings:AppResources.SaveZone}"
+                Command="{Binding SaveCommand}"
+                Style="{StaticResource ButtonPrimary}"
+                Margin="16,8,16,16" />
+    </Grid>
+</ContentPage>

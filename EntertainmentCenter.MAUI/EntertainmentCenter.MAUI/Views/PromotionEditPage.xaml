@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EntertainmentCenter.ViewModels"
+             xmlns:strings="clr-namespace:EntertainmentCenter.Resources.Strings"
+             x:Class="EntertainmentCenter.Views.PromotionEditPage"
+             x:DataType="vm:PromotionEditViewModel"
+             Title="{x:Static strings:AppResources.Promotion}"
+             BackgroundColor="{StaticResource Background}">
+
+    <Grid RowDefinitions="*,Auto">
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="16" Spacing="0">
+
+                <Label Text="{x:Static strings:AppResources.PromotionName}" Style="{StaticResource SectionLabel}" />
+                <Frame Style="{StaticResource CardStyle}" Padding="4" Margin="0,0,0,12">
+                    <Entry Text="{Binding Name}" Placeholder="{x:Static strings:AppResources.PromotionNamePlaceholder}" />
+                </Frame>
+
+                <Label Text="{x:Static strings:AppResources.DiscountTypeLabel}" Style="{StaticResource SectionLabel}" />
+                <!-- Segmented control -->
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="0" Margin="0,0,0,12">
+                    <Frame Grid.Column="0" CornerRadius="10" Padding="0" HasShadow="False"
+                           BorderColor="{Binding IsPercent, Converter={StaticResource BoolToColor}}"
+                           BackgroundColor="{Binding IsPercent, Converter={StaticResource BoolToColor}}">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SetDiscountTypeCommand}"
+                                                  CommandParameter="Percent" />
+                        </Frame.GestureRecognizers>
+                        <Label Text="{x:Static strings:AppResources.Percent}" FontSize="14" FontAttributes="Bold"
+                               TextColor="{Binding IsPercent, Converter={StaticResource BoolToColor}, ConverterParameter='#FFFFFF'}"
+                               HorizontalOptions="Center" VerticalOptions="Center"
+                               Padding="12,10" />
+                    </Frame>
+                    <Frame Grid.Column="1" CornerRadius="10" Padding="0" HasShadow="False"
+                           BorderColor="{Binding IsFixed, Converter={StaticResource BoolToColor}}"
+                           BackgroundColor="{Binding IsFixed, Converter={StaticResource BoolToColor}}">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SetDiscountTypeCommand}"
+                                                  CommandParameter="Fixed" />
+                        </Frame.GestureRecognizers>
+                        <Label Text="{x:Static strings:AppResources.FixAmount}" FontSize="14"
+                               TextColor="{Binding IsFixed, Converter={StaticResource BoolToColor}, ConverterParameter='#FFFFFF'}"
+                               HorizontalOptions="Center" VerticalOptions="Center"
+                               Padding="12,10" />
+                    </Frame>
+                </Grid>
+
+                <Label Text="{x:Static strings:AppResources.DiscountSize}" Style="{StaticResource SectionLabel}" />
+                <Frame Style="{StaticResource CardStyle}" Padding="4" Margin="0,0,0,12">
+                    <Entry Text="{Binding DiscountValue}"
+                           Keyboard="Numeric"
+                           Placeholder="{Binding IsPercent, StringFormat='50'}" />
+                </Frame>
+
+                <Label Text="{x:Static strings:AppResources.DayOfAction}" Style="{StaticResource SectionLabel}" />
+                <!-- Day pills -->
+                <FlexLayout Wrap="Wrap" JustifyContent="Start" AlignItems="Start"
+                             Margin="0,0,0,12">
+                    <Frame CornerRadius="20" Padding="12,6" Margin="0,0,8,8" HasShadow="False"
+                           BorderColor="{Binding IsAnyDaySelected, Converter={StaticResource BoolToColor}}"
+                           BackgroundColor="{Binding IsAnyDaySelected, Converter={StaticResource BoolToColor}}">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectDayCommand}" CommandParameter="-1" />
+                        </Frame.GestureRecognizers>
+                        <Label Text="{x:Static strings:AppResources.AnyDay}" FontSize="12" 
+                               TextColor="{Binding IsAnyDaySelected, Converter={StaticResource BoolToColor}, ConverterParameter='#FFFFFF'}" />
+                    </Frame>
+                    
+                    <Frame CornerRadius="20" Padding="12,6" Margin="0,0,8,8" HasShadow="False"
+                           BorderColor="{Binding IsMondaySelected, Converter={StaticResource BoolToColor}}"
+                           BackgroundColor="{Binding IsMondaySelected, Converter={StaticResource BoolToColor}}">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectDayCommand}" CommandParameter="1" />
+                        </Frame.GestureRecognizers>
+                        <Label Text="{x:Static strings:AppResources.Mon}" FontSize="12" 
+                               TextColor="{Binding IsMondaySelected, Converter={StaticResource BoolToColor}, ConverterParameter='#FFFFFF'}" />
+                    </Frame>
+                    
+                    <Frame CornerRadius="20" Padding="12,6" Margin="0,0,8,8" HasShadow="False"
+                           BorderColor="{Binding IsTuesdaySelected, Converter={StaticResource BoolToColor}}"
+                           BackgroundColor="{Binding IsTuesdaySelected, Converter={StaticResource BoolToColor}}">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectDayCommand}" CommandParameter="2" />
+                        </Frame.GestureRecognizers>
+                        <Label Text="{x:Static strings:AppResources.Tue}" FontSize="12" 
+                               TextColor="{Binding IsTuesdaySelected, Converter={StaticResource BoolToColor}, ConverterParameter='#FFFFFF'}" />
+                    </Frame>
+                    
+                    <Frame CornerRadius="20" Padding="12,6" Margin="0,0,8,8" HasShadow="False"
+                           BorderColor="{Binding IsWednesdaySelected, Converter={StaticResource BoolToColor}}"
+                           BackgroundColor="{Binding IsWednesdaySelected, Converter={StaticResource BoolToColor}}">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectDayCommand}" CommandParameter="3" />
+                        </Frame.GestureRecognizers>
+                        <Label Text="{x:Static strings:AppResources.Wed}" FontSize="12" 
+                               TextColor="{Binding IsWednesdaySelected, Converter={StaticResource BoolToColor}, ConverterParameter='#FFFFFF'}" />
+                    </Frame>
+                    
+                    <Frame CornerRadius="20" Padding="12,6" Margin="0,0,8,8" HasShadow="False"
+                           BorderColor="{Binding IsThursdaySelected, Converter={StaticResource BoolToColor}}"
+                           BackgroundColor="{Binding IsThursdaySelected, Converter={StaticResource BoolToColor}}">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectDayCommand}" CommandParameter="4" />
+                        </Frame.GestureRecognizers>
+                        <Label Text="{x:Static strings:AppResources.Thu}" FontSize="12" 
+                               TextColor="{Binding IsThursdaySelected, Converter={StaticResource BoolToColor}, ConverterParameter='#FFFFFF'}" />
+                    </Frame>
+                    
+                    <Frame CornerRadius="20" Padding="12,6" Margin="0,0,8,8" HasShadow="False"
+                           BorderColor="{Binding IsFridaySelected, Converter={StaticResource BoolToColor}}"
+                           BackgroundColor="{Binding IsFridaySelected, Converter={StaticResource BoolToColor}}">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectDayCommand}" CommandParameter="5" />
+                        </Frame.GestureRecognizers>
+                        <Label Text="{x:Static strings:AppResources.Fri}" FontSize="12" 
+                               TextColor="{Binding IsFridaySelected, Converter={StaticResource BoolToColor}, ConverterParameter='#FFFFFF'}" />
+                    </Frame>
+                    
+                    <Frame CornerRadius="20" Padding="12,6" Margin="0,0,8,8" HasShadow="False"
+                           BorderColor="{Binding IsSaturdaySelected, Converter={StaticResource BoolToColor}}"
+                           BackgroundColor="{Binding IsSaturdaySelected, Converter={StaticResource BoolToColor}}">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectDayCommand}" CommandParameter="6" />
+                        </Frame.GestureRecognizers>
+                        <Label Text="{x:Static strings:AppResources.Sat}" FontSize="12" 
+                               TextColor="{Binding IsSaturdaySelected, Converter={StaticResource BoolToColor}, ConverterParameter='#FFFFFF'}" />
+                    </Frame>
+                    
+                    <Frame CornerRadius="20" Padding="12,6" Margin="0,0,8,8" HasShadow="False"
+                           BorderColor="{Binding IsSundaySelected, Converter={StaticResource BoolToColor}}"
+                           BackgroundColor="{Binding IsSundaySelected, Converter={StaticResource BoolToColor}}">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectDayCommand}" CommandParameter="7" />
+                        </Frame.GestureRecognizers>
+                        <Label Text="{x:Static strings:AppResources.Sun}" FontSize="12" 
+                               TextColor="{Binding IsSundaySelected, Converter={StaticResource BoolToColor}, ConverterParameter='#FFFFFF'}" />
+                    </Frame>
+                </FlexLayout>
+
+                <!-- Active toggle -->
+                <Frame Style="{StaticResource CardStyle}" Padding="12" Margin="0,0,0,12">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Text="{x:Static strings:AppResources.Active}" FontSize="15" TextColor="{StaticResource TextPrimary}"
+                               VerticalOptions="Center" />
+                        <Switch Grid.Column="1" IsToggled="{Binding IsActive}"
+                                OnColor="{StaticResource YellowPrimary}" ThumbColor="White" />
+                    </Grid>
+                </Frame>
+
+                <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
+                                   Margin="0,12" />
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Save button pinned to bottom -->
+        <Button Grid.Row="1" Text="{x:Static strings:AppResources.SavePromotion}"
+                Command="{Binding SaveCommand}"
+                Style="{StaticResource ButtonPrimary}"
+                Margin="16,8,16,16" />
+    </Grid>
+</ContentPage>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:EntertainmentCenter.ViewModels"
+    xmlns:strings="clr-namespace:EntertainmentCenter.Resources.Strings"
+    x:Class="EntertainmentCenter.Views.NotificationSettingsPage"
+    x:DataType="vm:NotificationSettingsViewModel"
+    Title="{x:Static strings:AppResources.Notifications}"
+    BackgroundColor="{StaticResource Background}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="16">
+
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
+                               HorizontalOptions="Center" />
+
+            <!-- Enable/Disable -->
+            <Frame Style="{StaticResource CardStyle}" Padding="14">
+                <Grid ColumnDefinitions="*,Auto">
+                    <VerticalStackLayout VerticalOptions="Center" Spacing="2">
+                        <Label Text="{x:Static strings:AppResources.ExpirationWarnings}"
+                               FontSize="15" FontAttributes="Bold"
+                               TextColor="{StaticResource TextPrimary}" />
+                        <Label Text="{x:Static strings:AppResources.ShowNotificationWhenTimeRunningOut}"
+                               FontSize="12" TextColor="{StaticResource TextSecondary}" />
+                    </VerticalStackLayout>
+                    <Switch Grid.Column="1" IsToggled="{Binding WarningEnabled}"
+                            OnColor="{StaticResource YellowPrimary}" ThumbColor="White" />
+                </Grid>
+            </Frame>
+
+            <!-- Minutes before expiry -->
+            <Label Text="{x:Static strings:AppResources.HowManyMinutesBeforeEnd}" Style="{StaticResource SectionLabel}" />
+            <Frame Style="{StaticResource CardStyle}" Padding="8">
+                <HorizontalStackLayout Spacing="6" HorizontalOptions="Center">
+                    <Button Text="−" Style="{StaticResource ButtonSecondary}"
+                            WidthRequest="44" HeightRequest="44" FontSize="20"
+                            Command="{Binding SaveSettingsCommand}"
+                            IsEnabled="False" />
+                    <Entry Text="{Binding WarningMinutesBeforeExpiry}"
+                           Keyboard="Numeric" WidthRequest="80"
+                           HorizontalTextAlignment="Center" FontSize="22"
+                           IsEnabled="{Binding WarningEnabled}" />
+                    <Label Text="{x:Static strings:AppResources.MinutesUnit}" VerticalOptions="Center" FontSize="15"
+                           TextColor="{StaticResource TextPrimary}" />
+                </HorizontalStackLayout>
+            </Frame>
+
+            <!-- Info text -->
+            <Label Text="{Binding WarningInfoText}" FontSize="13" TextColor="{StaticResource TextSecondary}"
+                   HorizontalTextAlignment="Center" />
+
+            <!-- Save -->
+            <Button Text="{x:Static strings:AppResources.Save}" Style="{StaticResource ButtonPrimary}"
+                    Command="{Binding SaveSettingsCommand}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:EntertainmentCenter.ViewModels"
+    xmlns:strings="clr-namespace:EntertainmentCenter.Resources.Strings"
+    x:Class="EntertainmentCenter.Views.LoginPage"
+    x:DataType="vm:LoginViewModel"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="{StaticResource Background}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="16" VerticalOptions="Center" MaximumWidthRequest="400">
+
+            <!-- Connection Status Banner -->
+            <Frame CornerRadius="8" Padding="12,8" HasShadow="False" Margin="0,0,0,12"
+                   BorderColor="{Binding ConnectionStatusColor}"
+                   BackgroundColor="{Binding ConnectionStatusBgColor}"
+                   IsVisible="{Binding ShowConnectionStatusBanner}">
+                <HorizontalStackLayout Spacing="8">
+                    <BoxView WidthRequest="8" HeightRequest="8" CornerRadius="4"
+                             Color="{Binding ConnectionStatusColor}" VerticalOptions="Center" />
+                    <Label Text="{Binding ConnectionStatusText}" FontSize="12"
+                           TextColor="{Binding ConnectionStatusColor}" VerticalOptions="Center" />
+                </HorizontalStackLayout>
+            </Frame>
+
+            <!-- Logo / Title -->
+            <VerticalStackLayout Spacing="4" Margin="0,40,0,24">
+                <Label Text="Banana Kids" FontSize="28" FontAttributes="Bold"
+                       TextColor="{StaticResource YellowText}" HorizontalOptions="Center" />
+                <Label Text="Center" FontSize="28" FontAttributes="Bold"
+                       TextColor="{StaticResource YellowText}" HorizontalOptions="Center" />
+                <BoxView HeightRequest="3" WidthRequest="60" Color="{StaticResource YellowPrimary}"
+                         HorizontalOptions="Center" Margin="0,8,0,0" />
+            </VerticalStackLayout>
+
+            <!-- Role: Reception -->
+            <Frame Style="{StaticResource CardStyle}" Margin="0,0,0,12">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToReceptionCommand}" />
+                </Frame.GestureRecognizers>
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="14" Padding="4">
+                    <Frame BackgroundColor="{StaticResource YellowPrimary}" CornerRadius="12"
+                           WidthRequest="48" HeightRequest="48" Padding="0" HasShadow="False"
+                           BorderColor="Transparent" VerticalOptions="Center">
+                        <Label Text="🛎" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Frame>
+                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                        <Label Text="{x:Static strings:AppResources.Reception}" FontSize="16" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                        <Label Text="{x:Static strings:AppResources.ReceptionSub}" FontSize="13" TextColor="{StaticResource TextSecondary}" />
+                    </VerticalStackLayout>
+                </Grid>
+            </Frame>
+
+            <!-- Role: Entry Control -->
+            <Frame Style="{StaticResource CardStyle}" Margin="0,0,0,12">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToEntryCheckCommand}" />
+                </Frame.GestureRecognizers>
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="14" Padding="4">
+                    <Frame BackgroundColor="{StaticResource BlueLight}" CornerRadius="12"
+                           WidthRequest="48" HeightRequest="48" Padding="0" HasShadow="False"
+                           BorderColor="Transparent" VerticalOptions="Center">
+                        <Label Text="📷" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Frame>
+                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                        <Label Text="{x:Static strings:AppResources.EntryControl}" FontSize="16" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                        <Label Text="{x:Static strings:AppResources.EntryControlSub}" FontSize="13" TextColor="{StaticResource TextSecondary}" />
+                    </VerticalStackLayout>
+                </Grid>
+            </Frame>
+
+            <!-- Role: Admin -->
+            <Frame Style="{StaticResource CardStyle}">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToAdminPinCommand}" />
+                </Frame.GestureRecognizers>
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="14" Padding="4">
+                    <Frame BackgroundColor="{StaticResource YellowLight}" CornerRadius="12"
+                           WidthRequest="48" HeightRequest="48" Padding="0" HasShadow="False"
+                           BorderColor="Transparent" VerticalOptions="Center">
+                        <Label Text="🔒" FontSize="22" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Frame>
+                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                        <Label Text="{x:Static strings:AppResources.Admin}" FontSize="16" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                        <Label Text="{x:Static strings:AppResources.AdminSub}" FontSize="13" TextColor="{StaticResource TextSecondary}" />
+                    </VerticalStackLayout>
+                </Grid>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

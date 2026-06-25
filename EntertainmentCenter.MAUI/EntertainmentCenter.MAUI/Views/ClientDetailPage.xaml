@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:EntertainmentCenter.ViewModels"
+    xmlns:strings="clr-namespace:EntertainmentCenter.Resources.Strings"
+    x:Class="EntertainmentCenter.Views.ClientDetailPage"
+    x:DataType="vm:ClientDetailViewModel"
+    Title="{Binding ClientName}"
+    BackgroundColor="{StaticResource Background}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="12">
+
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
+                               HorizontalOptions="Center" />
+
+            <!-- Countdown Timer -->
+            <Frame CornerRadius="20" Padding="20,16" HasShadow="False" HorizontalOptions="Center"
+                   BackgroundColor="{StaticResource YellowLight}" BorderColor="Transparent"
+                   IsVisible="{Binding IsActive}">
+                <Label Text="{Binding TimeRemaining}" FontSize="48" FontAttributes="Bold"
+                       TextColor="{StaticResource YellowText}" HorizontalOptions="Center" />
+            </Frame>
+
+            <!-- Status Banner: Active -->
+            <Frame Style="{StaticResource StatusSuccess}" IsVisible="{Binding IsActive}">
+                <Label Text="{x:Static strings:AppResources.SessionActive}" FontSize="15" FontAttributes="Bold"
+                       TextColor="{StaticResource Success}" />
+            </Frame>
+
+            <!-- Status Banner: Pending -->
+            <Frame CornerRadius="10" Padding="12,10" HasShadow="False"
+                   BackgroundColor="#FEF3C7" BorderColor="#D97706"
+                   IsVisible="{Binding IsPending}">
+                <Label Text="{x:Static strings:AppResources.SessionPending}" FontSize="15" FontAttributes="Bold"
+                       TextColor="#92400E" />
+            </Frame>
+
+            <!-- Status Banner: Completed / Expired -->
+            <Frame Style="{StaticResource StatusDanger}" IsVisible="{Binding IsExpired}">
+                <Label Text="{x:Static strings:AppResources.SessionExpired}" FontSize="15" FontAttributes="Bold"
+                       TextColor="{StaticResource Danger}" />
+            </Frame>
+
+            <!-- Info rows -->
+            <Frame Style="{StaticResource CardStyle}">
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,*"
+                      RowSpacing="10" ColumnSpacing="16">
+
+                    <!-- Name -->
+                    <Label Grid.Row="0" Grid.Column="0" Text="{x:Static strings:AppResources.FullName}" Style="{StaticResource SubLabel}" />
+                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding ClientName}" FontSize="15"
+                           TextColor="{StaticResource TextPrimary}" HorizontalOptions="End" />
+
+                    <!-- Phone -->
+                    <Label Grid.Row="1" Grid.Column="0" Text="{x:Static strings:AppResources.Phone}" Style="{StaticResource SubLabel}" />
+                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding Phone}" FontSize="15"
+                           TextColor="{StaticResource TextPrimary}" HorizontalOptions="End" />
+
+                    <!-- Card Code -->
+                    <Label Grid.Row="2" Grid.Column="0" Text="{x:Static strings:AppResources.Card}" Style="{StaticResource SubLabel}"
+                           IsVisible="{Binding IsPhysicalCard}" />
+                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding CardCode}" FontSize="15"
+                           TextColor="{StaticResource TextPrimary}" HorizontalOptions="End"
+                           IsVisible="{Binding IsPhysicalCard}" />
+
+                    <!-- Zone -->
+                    <Label Grid.Row="3" Grid.Column="0" Text="{x:Static strings:AppResources.Zone}" Style="{StaticResource SubLabel}" />
+                    <Label Grid.Row="3" Grid.Column="1" Text="{Binding ZoneName}" FontSize="15"
+                           TextColor="{StaticResource TextPrimary}" HorizontalOptions="End" />
+
+                    <!-- Tariff -->
+                    <Label Grid.Row="4" Grid.Column="0" Text="{x:Static strings:AppResources.Tariff}" Style="{StaticResource SubLabel}" />
+                    <Label Grid.Row="4" Grid.Column="1" Text="{Binding TariffLabel}" FontSize="15"
+                           TextColor="{StaticResource TextPrimary}" HorizontalOptions="End" />
+
+                    <!-- VIP -->
+                    <Label Grid.Row="5" Grid.Column="0" Text="VIP" Style="{StaticResource SubLabel}" />
+                    <Label Grid.Row="5" Grid.Column="1" Text="{x:Static strings:AppResources.Yes}" FontSize="15"
+                           TextColor="{StaticResource TextPrimary}" HorizontalOptions="End"
+                           IsVisible="{Binding IsVip}" />
+                    <Label Grid.Row="5" Grid.Column="1" Text="{x:Static strings:AppResources.No}" FontSize="15"
+                           TextColor="{StaticResource TextSecondary}" HorizontalOptions="End"
+                           IsVisible="{Binding IsVip, Converter={StaticResource InvertBool}}" />
+
+                    <!-- Entry Time -->
+                    <Label Grid.Row="6" Grid.Column="0" Text="{x:Static strings:AppResources.Entry}" Style="{StaticResource SubLabel}" />
+                    <Label Grid.Row="6" Grid.Column="1" Text="{Binding EntryTime}" FontSize="15"
+                           TextColor="{StaticResource TextPrimary}" HorizontalOptions="End" />
+
+                    <!-- Expires At -->
+                    <Label Grid.Row="7" Grid.Column="0" Text="{x:Static strings:AppResources.ExpiresAt}" Style="{StaticResource SubLabel}" />
+                    <Label Grid.Row="7" Grid.Column="1" Text="{Binding ExpiresAt}" FontSize="15"
+                           TextColor="{StaticResource TextPrimary}" HorizontalOptions="End" />
+
+                    <!-- Price -->
+                    <Label Grid.Row="8" Grid.Column="0" Text="{x:Static strings:AppResources.Price}" Style="{StaticResource SubLabel}" />
+                    <Label Grid.Row="8" Grid.Column="1" FontSize="15"
+                           TextColor="{StaticResource TextPrimary}" HorizontalOptions="End">
+                        <Label.Text>
+                            <Binding Path="FinalPrice" StringFormat="{}{0:F2} lei" />
+                        </Label.Text>
+                    </Label>
+                </Grid>
+            </Frame>
+
+            <!-- Extend Session -->
+            <Button Text="{x:Static strings:AppResources.ExtendSession}" Style="{StaticResource ButtonPrimary}"
+                    Command="{Binding ToggleExtendPanelCommand}"
+                    IsVisible="{Binding IsActive}"
+                    Margin="0,8,0,0" />
+
+            <!-- Extend Session Panel -->
+            <Frame Style="{StaticResource CardStyle}" IsVisible="{Binding IsExtendPanelVisible}" Margin="0,4,0,8">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="{x:Static strings:AppResources.ExtendSession}" FontSize="18" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,0,0,10" />
+
+                    <!-- Tariff Picker -->
+                    <Label Text="{x:Static strings:AppResources.Tariff}" Style="{StaticResource SectionLabel}" />
+                    <Frame Style="{StaticResource CardStyle}" Padding="4" Margin="0,0,0,4" HasShadow="False" BorderColor="#E5E7EB">
+                        <Picker Title="Select Tariff"
+                                ItemsSource="{Binding ExtendTariffs}"
+                                SelectedItem="{Binding SelectedExtendTariff}"
+                                ItemDisplayBinding="{Binding Label}" />
+                    </Frame>
+
+                    <!-- Custom Duration -->
+                    <Label Text="{x:Static strings:AppResources.Duration}" Style="{StaticResource SectionLabel}" />
+                    <Frame Style="{StaticResource CardStyle}" Padding="8" Margin="0,0,0,4" HasShadow="False" BorderColor="#E5E7EB">
+                        <HorizontalStackLayout Spacing="4" HorizontalOptions="Center">
+                            <Entry Text="{Binding CustomExtendHours}" Placeholder="{x:Static strings:AppResources.HoursPlaceholder}"
+                                   Keyboard="Numeric" WidthRequest="70" HorizontalTextAlignment="Center" />
+                            <Label Text="{x:Static strings:AppResources.HoursUnit}" VerticalOptions="Center" FontSize="15"
+                                   TextColor="{StaticResource TextPrimary}" />
+                            <Entry Text="{Binding CustomExtendMinutes}" Placeholder="{x:Static strings:AppResources.MinutesPlaceholder}"
+                                   Keyboard="Numeric" WidthRequest="70" HorizontalTextAlignment="Center" />
+                            <Label Text="{x:Static strings:AppResources.MinutesUnit}" VerticalOptions="Center" FontSize="15"
+                                   TextColor="{StaticResource TextPrimary}" />
+                        </HorizontalStackLayout>
+                    </Frame>
+
+                    <!-- Promotion Picker -->
+                    <Label Text="{x:Static strings:AppResources.Promotion}" Style="{StaticResource SectionLabel}" />
+                    <Frame Style="{StaticResource CardStyle}" Padding="4" Margin="0,0,0,4" HasShadow="False" BorderColor="#E5E7EB">
+                        <Picker Title="None"
+                                ItemsSource="{Binding ExtendPromotions}"
+                                SelectedItem="{Binding SelectedExtendPromotion}"
+                                ItemDisplayBinding="{Binding Name}" />
+                    </Frame>
+
+                    <!-- Extend Price -->
+                    <Frame Padding="12" CornerRadius="10"
+                           BackgroundColor="{StaticResource YellowLight}"
+                           BorderColor="{StaticResource YellowDark}"
+                           HasShadow="False"
+                           Margin="0,4">
+                        <HorizontalStackLayout HorizontalOptions="Center" Spacing="4">
+                            <Label Text="{x:Static strings:AppResources.ExtendPriceLabel}" FontSize="16"
+                                   TextColor="{StaticResource YellowText}"
+                                   VerticalOptions="Center" />
+                            <Label Text="{Binding ExtendPrice}"
+                                   TextColor="{StaticResource YellowDark}"
+                                   FontSize="22" FontAttributes="Bold"
+                                   VerticalOptions="Center" />
+                            <Label Text=" lei"
+                                   TextColor="{StaticResource YellowText}"
+                                   FontSize="15"
+                                   VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+                    </Frame>
+
+                    <!-- Submit extension -->
+                    <Button Text="{x:Static strings:AppResources.ConfirmExtension}"
+                            Command="{Binding ConfirmExtensionCommand}"
+                            Style="{StaticResource ButtonPrimary}"
+                            HorizontalOptions="Fill" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- End Session -->
+            <Button Text="{x:Static strings:AppResources.EndSession}" Style="{StaticResource ButtonDanger}"
+                    Command="{Binding EndSessionCommand}"
+                    IsVisible="{Binding IsActive}"
+                    Margin="0,8,0,0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

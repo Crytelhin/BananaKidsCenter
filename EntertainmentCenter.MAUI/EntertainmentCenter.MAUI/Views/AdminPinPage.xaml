@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:EntertainmentCenter.ViewModels"
+    xmlns:strings="clr-namespace:EntertainmentCenter.Resources.Strings"
+    x:Class="EntertainmentCenter.Views.AdminPinPage"
+    x:DataType="vm:AdminPinViewModel"
+    Title="PIN"
+    BackgroundColor="{StaticResource Background}">
+
+    <VerticalStackLayout Padding="24" Spacing="20" VerticalOptions="Center" MaximumWidthRequest="320"
+                          HorizontalOptions="Center">
+
+        <Label Text="{x:Static strings:AppResources.EnterPin}" FontSize="18" FontAttributes="Bold"
+               TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+
+        <!-- 4 Dot Indicators -->
+        <Label Text="{Binding Dots}" FontSize="36" HorizontalOptions="Center"
+               TextColor="{Binding IsError, Converter={x:Null}}" Margin="0,8,0,8">
+            <Label.Triggers>
+                <DataTrigger TargetType="Label" Binding="{Binding IsError}" Value="True">
+                    <Setter Property="TextColor" Value="{StaticResource Danger}" />
+                </DataTrigger>
+            </Label.Triggers>
+        </Label>
+
+        <!-- Keypad 3×4 -->
+        <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*,*,*" ColumnSpacing="10" RowSpacing="10">
+
+            <!-- Row 1: 1 2 3 -->
+            <Button Grid.Row="0" Grid.Column="0" Text="1"
+                    Style="{StaticResource ButtonSecondary}" HeightRequest="60" WidthRequest="60"
+                    CornerRadius="30" FontSize="22" FontAttributes="Bold"
+                    Command="{Binding AddDigitCommand}" CommandParameter="1" />
+            <Button Grid.Row="0" Grid.Column="1" Text="2"
+                    Style="{StaticResource ButtonSecondary}" HeightRequest="60" WidthRequest="60"
+                    CornerRadius="30" FontSize="22" FontAttributes="Bold"
+                    Command="{Binding AddDigitCommand}" CommandParameter="2" />
+            <Button Grid.Row="0" Grid.Column="2" Text="3"
+                    Style="{StaticResource ButtonSecondary}" HeightRequest="60" WidthRequest="60"
+                    CornerRadius="30" FontSize="22" FontAttributes="Bold"
+                    Command="{Binding AddDigitCommand}" CommandParameter="3" />
+
+            <!-- Row 2: 4 5 6 -->
+            <Button Grid.Row="1" Grid.Column="0" Text="4"
+                    Style="{StaticResource ButtonSecondary}" HeightRequest="60" WidthRequest="60"
+                    CornerRadius="30" FontSize="22" FontAttributes="Bold"
+                    Command="{Binding AddDigitCommand}" CommandParameter="4" />
+            <Button Grid.Row="1" Grid.Column="1" Text="5"
+                    Style="{StaticResource ButtonSecondary}" HeightRequest="60" WidthRequest="60"
+                    CornerRadius="30" FontSize="22" FontAttributes="Bold"
+                    Command="{Binding AddDigitCommand}" CommandParameter="5" />
+            <Button Grid.Row="1" Grid.Column="2" Text="6"
+                    Style="{StaticResource ButtonSecondary}" HeightRequest="60" WidthRequest="60"
+                    CornerRadius="30" FontSize="22" FontAttributes="Bold"
+                    Command="{Binding AddDigitCommand}" CommandParameter="6" />
+
+            <!-- Row 3: 7 8 9 -->
+            <Button Grid.Row="2" Grid.Column="0" Text="7"
+                    Style="{StaticResource ButtonSecondary}" HeightRequest="60" WidthRequest="60"
+                    CornerRadius="30" FontSize="22" FontAttributes="Bold"
+                    Command="{Binding AddDigitCommand}" CommandParameter="7" />
+            <Button Grid.Row="2" Grid.Column="1" Text="8"
+                    Style="{StaticResource ButtonSecondary}" HeightRequest="60" WidthRequest="60"
+                    CornerRadius="30" FontSize="22" FontAttributes="Bold"
+                    Command="{Binding AddDigitCommand}" CommandParameter="8" />
+            <Button Grid.Row="2" Grid.Column="2" Text="9"
+                    Style="{StaticResource ButtonSecondary}" HeightRequest="60" WidthRequest="60"
+                    CornerRadius="30" FontSize="22" FontAttributes="Bold"
+                    Command="{Binding AddDigitCommand}" CommandParameter="9" />
+
+            <!-- Row 4: empty, 0, backspace -->
+            <BoxView Grid.Row="3" Grid.Column="0" Color="Transparent" />
+            <Button Grid.Row="3" Grid.Column="1" Text="0"
+                    Style="{StaticResource ButtonSecondary}" HeightRequest="60" WidthRequest="60"
+                    CornerRadius="30" FontSize="22" FontAttributes="Bold"
+                    Command="{Binding AddDigitCommand}" CommandParameter="0" />
+            <Button Grid.Row="3" Grid.Column="2" Text="⌫"
+                    Style="{StaticResource ButtonSecondary}" HeightRequest="60" WidthRequest="60"
+                    CornerRadius="30" FontSize="20"
+                    Command="{Binding ClearLastCommand}" />
+        </Grid>
+
+        <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
+                           HorizontalOptions="Center" Margin="0,10,0,0" />
+
+    </VerticalStackLayout>
+</ContentPage>

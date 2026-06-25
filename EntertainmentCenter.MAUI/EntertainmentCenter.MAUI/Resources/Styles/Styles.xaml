@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xaml-comp compile="true" ?>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- === БАЗОВЫЕ СТИЛИ === -->
+
+    <!-- Страница -->
+    <Style TargetType="ContentPage">
+        <Setter Property="BackgroundColor" Value="{StaticResource Background}" />
+    </Style>
+
+    <Style TargetType="Page" ApplyToDerivedTypes="True">
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource Background}" />
+    </Style>
+
+    <!-- Shell / TabBar -->
+    <Style TargetType="Shell" ApplyToDerivedTypes="True">
+        <Setter Property="Shell.BackgroundColor" Value="{StaticResource YellowPrimary}" />
+        <Setter Property="Shell.ForegroundColor" Value="{StaticResource YellowText}" />
+        <Setter Property="Shell.TitleColor" Value="{StaticResource YellowText}" />
+        <Setter Property="Shell.DisabledColor" Value="{StaticResource TextHint}" />
+        <Setter Property="Shell.UnselectedColor" Value="{StaticResource TextSecondary}" />
+        <Setter Property="Shell.NavBarHasShadow" Value="False" />
+        <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource Surface}" />
+        <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource BluePrimary}" />
+        <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource BluePrimary}" />
+        <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource TextSecondary}" />
+    </Style>
+
+    <!-- NavigationPage / TopBar -->
+    <Style TargetType="NavigationPage">
+        <Setter Property="BarBackgroundColor" Value="{StaticResource YellowPrimary}" />
+        <Setter Property="BarTextColor" Value="{StaticResource YellowText}" />
+    </Style>
+
+    <!-- === КОМПОНЕНТЫ === -->
+
+    <!-- Label -->
+    <Style TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontSize" Value="14" />
+    </Style>
+
+    <!-- Entry -->
+    <Style TargetType="Entry">
+        <Setter Property="BackgroundColor" Value="{StaticResource Surface}" />
+        <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
+        <Setter Property="PlaceholderColor" Value="{StaticResource TextHint}" />
+        <Setter Property="FontFamily" Value="OpenSansRegular"/>
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="MinimumHeightRequest" Value="44"/>
+    </Style>
+
+    <!-- Button (базовый — синий) -->
+    <Style TargetType="Button">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="BackgroundColor" Value="{StaticResource BluePrimary}" />
+        <Setter Property="FontFamily" Value="OpenSansRegular"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="BorderWidth" Value="0"/>
+        <Setter Property="CornerRadius" Value="10"/>
+        <Setter Property="Padding" Value="14,10"/>
+        <Setter Property="MinimumHeightRequest" Value="44"/>
+        <Setter Property="MinimumWidthRequest" Value="44"/>
+    </Style>
+
+    <!-- Frame -->
+    <Style TargetType="Frame">
+        <Setter Property="HasShadow" Value="False" />
+        <Setter Property="BorderColor" Value="{StaticResource Border}" />
+        <Setter Property="CornerRadius" Value="14" />
+        <Setter Property="BackgroundColor" Value="{StaticResource Surface}" />
+    </Style>
+
+    <!-- Picker -->
+    <Style TargetType="Picker">
+        <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
+        <Setter Property="TitleColor" Value="{StaticResource TextHint}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="FontFamily" Value="OpenSansRegular"/>
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="MinimumHeightRequest" Value="44"/>
+    </Style>
+
+    <!-- ActivityIndicator -->
+    <Style TargetType="ActivityIndicator">
+        <Setter Property="Color" Value="{StaticResource BluePrimary}" />
+    </Style>
+
+    <!-- CheckBox -->
+    <Style TargetType="CheckBox">
+        <Setter Property="Color" Value="{StaticResource BluePrimary}" />
+        <Setter Property="MinimumHeightRequest" Value="44"/>
+        <Setter Property="MinimumWidthRequest" Value="44"/>
+    </Style>
+
+    <!-- RadioButton -->
+    <Style TargetType="RadioButton">
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
+        <Setter Property="FontFamily" Value="OpenSansRegular"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="MinimumHeightRequest" Value="44"/>
+    </Style>
+
+    <!-- BoxView -->
+    <Style TargetType="BoxView">
+        <Setter Property="BackgroundColor" Value="{StaticResource Border}" />
+    </Style>
+
+    <!-- CollectionView / ListView -->
+    <Style TargetType="ListView">
+        <Setter Property="SeparatorColor" Value="{StaticResource Border}" />
+    </Style>
+
+    <!-- === ИМЕНОВАННЫЕ СТИЛИ === -->
+
+    <!-- Карточка клиента / секция -->
+    <Style x:Key="CardStyle" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="{StaticResource Surface}" />
+        <Setter Property="BorderColor" Value="{StaticResource Border}" />
+        <Setter Property="CornerRadius" Value="14" />
+        <Setter Property="Padding" Value="14" />
+        <Setter Property="HasShadow" Value="False" />
+        <Setter Property="Margin" Value="0,0,0,10" />
+    </Style>
+
+    <!-- Основная кнопка (синяя) -->
+    <Style x:Key="ButtonPrimary" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource BluePrimary}" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="HeightRequest" Value="44" />
+        <Setter Property="Margin" Value="0,4" />
+    </Style>
+
+    <!-- Вторичная кнопка (жёлтая) -->
+    <Style x:Key="ButtonSecondary" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource YellowLight}" />
+        <Setter Property="TextColor" Value="{StaticResource YellowText}" />
+        <Setter Property="BorderColor" Value="{StaticResource YellowDark}" />
+        <Setter Property="BorderWidth" Value="1.5" />
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="HeightRequest" Value="44" />
+        <Setter Property="Margin" Value="0,4" />
+    </Style>
+
+    <!-- Деструктивная кнопка (красная) -->
+    <Style x:Key="ButtonDanger" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource Danger}" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="HeightRequest" Value="44" />
+        <Setter Property="Margin" Value="0,4" />
+    </Style>
+
+    <!-- Текстовая кнопка (прозрачная) -->
+    <Style x:Key="ButtonText" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="TextColor" Value="{StaticResource BluePrimary}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="BorderWidth" Value="0" />
+    </Style>
+
+    <!-- Имя клиента -->
+    <Style x:Key="ClientNameLabel" TargetType="Label">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
+    </Style>
+
+    <!-- Вспомогательный текст -->
+    <Style x:Key="SubLabel" TargetType="Label">
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="TextColor" Value="{StaticResource TextSecondary}" />
+    </Style>
+
+    <!-- Метка секции -->
+    <Style x:Key="SectionLabel" TargetType="Label">
+        <Setter Property="FontSize" Value="11" />
+        <Setter Property="TextColor" Value="{StaticResource TextSecondary}" />
+        <Setter Property="CharacterSpacing" Value="1.2" />
+        <Setter Property="Margin" Value="0,12,0,4" />
+    </Style>
+
+    <!-- Таймер обычный -->
+    <Style x:Key="TimerNormal" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="{StaticResource YellowLight}" />
+        <Setter Property="BorderColor" Value="{StaticResource YellowDark}" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="Padding" Value="6,3" />
+        <Setter Property="HasShadow" Value="False" />
+    </Style>
+
+    <!-- Таймер критический -->
+    <Style x:Key="TimerUrgent" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="{StaticResource DangerBackground}" />
+        <Setter Property="BorderColor" Value="{StaticResource Danger}" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="Padding" Value="6,3" />
+        <Setter Property="HasShadow" Value="False" />
+    </Style>
+
+    <!-- Бейдж зоны -->
+    <Style x:Key="ZoneBadge" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="{StaticResource BlueLight}" />
+        <Setter Property="BorderColor" Value="{StaticResource BlueLight}" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="Padding" Value="8,3" />
+        <Setter Property="HasShadow" Value="False" />
+    </Style>
+
+    <!-- Статус-баннер успех -->
+    <Style x:Key="StatusSuccess" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="{StaticResource SuccessBackground}" />
+        <Setter Property="BorderColor" Value="{StaticResource Success}" />
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="Padding" Value="12,10" />
+        <Setter Property="HasShadow" Value="False" />
+    </Style>
+
+    <!-- Статус-баннер ошибка -->
+    <Style x:Key="StatusDanger" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="{StaticResource DangerBackground}" />
+        <Setter Property="BorderColor" Value="{StaticResource Danger}" />
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="Padding" Value="12,10" />
+        <Setter Property="HasShadow" Value="False" />
+    </Style>
+
+</ResourceDictionary>

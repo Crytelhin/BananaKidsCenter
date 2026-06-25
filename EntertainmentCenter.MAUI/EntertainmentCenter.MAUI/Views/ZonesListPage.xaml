@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:EntertainmentCenter.ViewModels"
+    xmlns:strings="clr-namespace:EntertainmentCenter.Resources.Strings"
+    x:Class="EntertainmentCenter.Views.ZonesListPage"
+    x:DataType="vm:ZonesListViewModel"
+    Title="{x:Static strings:AppResources.ZonesAndTariffs}"
+    BackgroundColor="{StaticResource Background}">
+
+    <Grid RowDefinitions="Auto,Auto,*" Padding="16" RowSpacing="12">
+
+        <ActivityIndicator Grid.Row="0" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
+                           HorizontalOptions="Center" Margin="0,8" />
+
+        <Button Grid.Row="1" Text="{x:Static strings:AppResources.AddZone}" Style="{StaticResource ButtonPrimary}"
+                Command="{Binding AddZoneCommand}" />
+
+        <CollectionView Grid.Row="2" ItemsSource="{Binding Zones}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="vm:ZoneDisplay">
+                    <Frame Style="{StaticResource CardStyle}">
+                        <Grid ColumnDefinitions="Auto,*,Auto,Auto" ColumnSpacing="10">
+
+                            <!-- Active Toggle -->
+                            <Switch IsToggled="{Binding IsActive}" ThumbColor="White"
+                                    OnColor="{StaticResource YellowPrimary}" />
+                            <!-- Name + tariffs count -->
+                            <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                                <Label Text="{Binding Name}" FontSize="16" FontAttributes="Bold"
+                                       TextColor="{StaticResource TextPrimary}" />
+                                <Label FontSize="13" TextColor="{StaticResource TextSecondary}">
+                                    <Label.Text>
+                                        <Binding Path="TariffCountText" />
+                                    </Label.Text>
+                                </Label>
+                            </VerticalStackLayout>
+
+                            <!-- Edit button -->
+                            <Button Grid.Column="2" Text="✏" Style="{StaticResource ButtonText}"
+                                    FontSize="18" WidthRequest="44"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ZonesListViewModel}}, Path=EditZoneCommand}"
+                                    CommandParameter="{Binding .}" />
+                            <!-- Delete button -->
+                            <Button Grid.Column="3" Text="🗑" Style="{StaticResource ButtonText}"
+                                    FontSize="18" WidthRequest="44"
+                                    TextColor="{StaticResource Danger}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ZonesListViewModel}}, Path=DeleteZoneCommand}"
+                                    CommandParameter="{Binding .}" />
+                        </Grid>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ZonesListViewModel}}, Path=EditZoneCommand}"
+                                CommandParameter="{Binding .}" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+            <CollectionView.EmptyView>
+                <Label Text="{x:Static strings:AppResources.NoZonesAdded}" Style="{StaticResource SubLabel}"
+                       HorizontalOptions="Center" Margin="0,40" />
+            </CollectionView.EmptyView>
+        </CollectionView>
+    </Grid>
+</ContentPage>

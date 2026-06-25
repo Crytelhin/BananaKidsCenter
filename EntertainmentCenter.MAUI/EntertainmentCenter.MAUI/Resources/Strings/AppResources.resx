@@ -1,0 +1,637 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="0" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="LoginTitle" xml:space="preserve">
+    <value>Вход в систему</value>
+  </data>
+  <data name="Reception" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
+  <data name="ReceptionSub" xml:space="preserve">
+    <value>Регистрировать клиентов</value>
+  </data>
+  <data name="EntryControl" xml:space="preserve">
+    <value>Контроль входа</value>
+  </data>
+  <data name="EntryControlSub" xml:space="preserve">
+    <value>Проверять вход в зоны</value>
+  </data>
+  <data name="Admin" xml:space="preserve">
+    <value>Администратор</value>
+  </data>
+  <data name="AdminSub" xml:space="preserve">
+    <value>Управление Banana Kids</value>
+  </data>
+  <data name="SearchPlaceholder" xml:space="preserve">
+    <value>Поиск по имени или карте...</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Поиск</value>
+  </data>
+  <data name="NoActiveClients" xml:space="preserve">
+    <value>Нет активных клиентов</value>
+  </data>
+  <data name="Remaining" xml:space="preserve">
+    <value>Осталось</value>
+  </data>
+  <data name="Vip" xml:space="preserve">
+    <value>VIP</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="AddClient" xml:space="preserve">
+    <value>Добавить клиента</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>ФИО</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Телефон</value>
+  </data>
+  <data name="Card" xml:space="preserve">
+    <value>Карта</value>
+  </data>
+  <data name="Cardless" xml:space="preserve">
+    <value>Регистрация без карты</value>
+  </data>
+  <data name="Scan" xml:space="preserve">
+    <value>Сканировать</value>
+  </data>
+  <data name="Zone" xml:space="preserve">
+    <value>Зона</value>
+  </data>
+  <data name="Tariff" xml:space="preserve">
+    <value>Тариф</value>
+  </data>
+  <data name="Duration" xml:space="preserve">
+    <value>Длительность</value>
+  </data>
+  <data name="Promotion" xml:space="preserve">
+    <value>Акция (необязательно)</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Итого:</value>
+  </data>
+  <data name="MarketingConsent" xml:space="preserve">
+    <value>Согласен на рассылку</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
+  <data name="TimeRemaining" xml:space="preserve">
+    <value>Оставшееся время</value>
+  </data>
+  <data name="SessionActive" xml:space="preserve">
+    <value>✓ Сессия активна</value>
+  </data>
+  <data name="SessionPending" xml:space="preserve">
+    <value>⏰ Ожидает входа</value>
+  </data>
+  <data name="SessionExpired" xml:space="preserve">
+    <value>✗ Сессия завершена</value>
+  </data>
+  <data name="ExpiresAt" xml:space="preserve">
+    <value>Действует до</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Цена</value>
+  </data>
+  <data name="EndSession" xml:space="preserve">
+    <value>Завершить сессию</value>
+  </data>
+  <data name="ExtendSession" xml:space="preserve">
+    <value>Продлить сессию</value>
+  </data>
+  <data name="ConfirmExtension" xml:space="preserve">
+    <value>Подтвердить продление</value>
+  </data>
+  <data name="DailyReport" xml:space="preserve">
+    <value>Выгрузка отчетов</value>
+  </data>
+  <data name="DownloadCsv" xml:space="preserve">
+    <value>Скачать CSV отчет</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Выйти</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>ОТЧЕТЫ</value>
+  </data>
+  <data name="Management" xml:space="preserve">
+    <value>УПРАВЛЕНИЕ</value>
+  </data>
+  <data name="ZonesAndTariffs" xml:space="preserve">
+    <value>Зоны и тарифы</value>
+  </data>
+  <data name="Promotions" xml:space="preserve">
+    <value>Акции</value>
+  </data>
+  <data name="Notifications" xml:space="preserve">
+    <value>Уведомления</value>
+  </data>
+  <data name="ClientHistory" xml:space="preserve">
+    <value>История клиентов</value>
+  </data>
+  <data name="ServerConnection" xml:space="preserve">
+    <value>Подключение к серверу</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Язык</value>
+  </data>
+  <data name="LanguageWarning" xml:space="preserve">
+    <value>Для применения изменений требуется перезапуск приложения</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Подтвердить</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="SelectLanguage" xml:space="preserve">
+    <value>Выберите язык</value>
+  </data>
+  <data name="RestartApp" xml:space="preserve">
+    <value>Перезапуск</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Успех</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>Инфо</value>
+  </data>
+  <data name="HoursUnit" xml:space="preserve">
+    <value>ч</value>
+  </data>
+  <data name="MinutesUnit" xml:space="preserve">
+    <value>м</value>
+  </data>
+  <data name="Lei" xml:space="preserve">
+    <value>лей</value>
+  </data>
+  <data name="HoursPlaceholder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="MinutesPlaceholder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="RegistrationMode" xml:space="preserve">
+    <value>Режим регистрации</value>
+  </data>
+  <data name="PhysicalCard" xml:space="preserve">
+    <value>Физическая карта</value>
+  </data>
+  <data name="CardlessMode" xml:space="preserve">
+    <value>Без карты</value>
+  </data>
+  <data name="CardCode" xml:space="preserve">
+    <value>Номер карты</value>
+  </data>
+  <data name="Barcode" xml:space="preserve">
+    <value>Штрихкод</value>
+  </data>
+  <data name="NewClient" xml:space="preserve">
+    <value>Новый клиент</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Да</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Нет</value>
+  </data>
+  <data name="Entry" xml:space="preserve">
+    <value>Вход</value>
+  </data>
+  <data name="ExtendPriceLabel" xml:space="preserve">
+    <value>Стоимость продления:</value>
+  </data>
+  <data name="VisitsToday" xml:space="preserve">
+    <value>Визитов сегодня</value>
+  </data>
+  <data name="ActiveNow" xml:space="preserve">
+    <value>Активны сейчас</value>
+  </data>
+  <data name="RevenueToday" xml:space="preserve">
+    <value>Выручка сегодня</value>
+  </data>
+  <data name="EnterPin" xml:space="preserve">
+    <value>Введите PIN</value>
+  </data>
+  <data name="NameOrPhone" xml:space="preserve">
+    <value>Имя или телефон</value>
+  </data>
+  <data name="Today" xml:space="preserve">
+    <value>Сегодня</value>
+  </data>
+  <data name="Week" xml:space="preserve">
+    <value>Неделя</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Всё</value>
+  </data>
+  <data name="SessionsNotFound" xml:space="preserve">
+    <value>Сессии не найдены</value>
+  </data>
+  <data name="EnterCardCodePlaceholder" xml:space="preserve">
+    <value>Введите код карты...</value>
+  </data>
+  <data name="ActiveSessions" xml:space="preserve">
+    <value>Активные сессии</value>
+  </data>
+  <data name="NoActiveSessions" xml:space="preserve">
+    <value>Нет активных сессий</value>
+  </data>
+  <data name="ExpirationWarnings" xml:space="preserve">
+    <value>Предупреждения об истечении</value>
+  </data>
+  <data name="ShowNotificationWhenTimeRunningOut" xml:space="preserve">
+    <value>Показывать уведомление, когда у клиента заканчивается время</value>
+  </data>
+  <data name="HowManyMinutesBeforeEnd" xml:space="preserve">
+    <value>За сколько минут до конца</value>
+  </data>
+  <data name="NotificationWarningStringFormat" xml:space="preserve">
+    <value>Уведомление появится за {0} мин. до окончания сессии на странице регистрации</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="PromotionName" xml:space="preserve">
+    <value>Название акции</value>
+  </data>
+  <data name="PromotionNamePlaceholder" xml:space="preserve">
+    <value>Скидка среды</value>
+  </data>
+  <data name="DiscountTypeLabel" xml:space="preserve">
+    <value>Тип скидки</value>
+  </data>
+  <data name="Percent" xml:space="preserve">
+    <value>Процент</value>
+  </data>
+  <data name="FixAmount" xml:space="preserve">
+    <value>Фикс. сумма</value>
+  </data>
+  <data name="DiscountSize" xml:space="preserve">
+    <value>Размер скидки</value>
+  </data>
+  <data name="DayOfAction" xml:space="preserve">
+    <value>День действия</value>
+  </data>
+  <data name="AnyDay" xml:space="preserve">
+    <value>Любой день</value>
+  </data>
+  <data name="Mon" xml:space="preserve">
+    <value>Пн</value>
+  </data>
+  <data name="Tue" xml:space="preserve">
+    <value>Вт</value>
+  </data>
+  <data name="Wed" xml:space="preserve">
+    <value>Ср</value>
+  </data>
+  <data name="Thu" xml:space="preserve">
+    <value>Чт</value>
+  </data>
+  <data name="Fri" xml:space="preserve">
+    <value>Пт</value>
+  </data>
+  <data name="Sat" xml:space="preserve">
+    <value>Сб</value>
+  </data>
+  <data name="Sun" xml:space="preserve">
+    <value>Вс</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Активна</value>
+  </data>
+  <data name="SavePromotion" xml:space="preserve">
+    <value>Сохранить акцию</value>
+  </data>
+  <data name="AddPromotion" xml:space="preserve">
+    <value>+ Добавить акцию</value>
+  </data>
+  <data name="NoPromotionsAdded" xml:space="preserve">
+    <value>Акции не добавлены</value>
+  </data>
+  <data name="ServerIpOrName" xml:space="preserve">
+    <value>IP-адрес или имя сервера</value>
+  </data>
+  <data name="ServerIpExample" xml:space="preserve">
+    <value>Например: http://KorsysBook.local:5000 или http://192.168.1.100:5000</value>
+  </data>
+  <data name="Connect" xml:space="preserve">
+    <value>Подключиться</value>
+  </data>
+  <data name="ZoneNameLabel" xml:space="preserve">
+    <value>Название зоны</value>
+  </data>
+  <data name="ZoneNamePlaceholder" xml:space="preserve">
+    <value>Игровая зона</value>
+  </data>
+  <data name="Tariffs" xml:space="preserve">
+    <value>Тарифы</value>
+  </data>
+  <data name="AddTariff" xml:space="preserve">
+    <value>+ Добавить тариф</value>
+  </data>
+  <data name="NoTariffsAdded" xml:space="preserve">
+    <value>Тарифы не добавлены</value>
+  </data>
+  <data name="TariffNamePlaceholder" xml:space="preserve">
+    <value>Название тарифа</value>
+  </data>
+  <data name="PriceLeiLabel" xml:space="preserve">
+    <value>Цена (лей)</value>
+  </data>
+  <data name="SaveZone" xml:space="preserve">
+    <value>Сохранить зону</value>
+  </data>
+  <data name="AddZone" xml:space="preserve">
+    <value>+ Добавить зону</value>
+  </data>
+  <data name="NoZonesAdded" xml:space="preserve">
+    <value>Зоны не добавлены</value>
+  </data>
+  <data name="TariffCountFormat" xml:space="preserve">
+    <value>{0} тарифов</value>
+  </data>
+  <data name="NoConnectionToServer" xml:space="preserve">
+    <value>Нет подключения к серверу</value>
+  </data>
+  <data name="ServerError" xml:space="preserve">
+    <value>Ошибка сервера, попробуйте снова</value>
+  </data>
+  <data name="Saved" xml:space="preserve">
+    <value>Сохранено</value>
+  </data>
+  <data name="NotificationSettingsSaved" xml:space="preserve">
+    <value>Настройки уведомлений сохранены</value>
+  </data>
+  <data name="EnterPromotionName" xml:space="preserve">
+    <value>Введите название акции</value>
+  </data>
+  <data name="EnterDiscountSize" xml:space="preserve">
+    <value>Укажите размер скидки</value>
+  </data>
+  <data name="DeactivatePromotionConfirm" xml:space="preserve">
+    <value>Деактивировать акцию "{0}"?</value>
+  </data>
+  <data name="DeleteZoneConfirm" xml:space="preserve">
+    <value>Полностью удалить зону "{0}" и все её тарифы? Активные сессии будут завершены.</value>
+  </data>
+  <data name="ClientRegisteredSuccess" xml:space="preserve">
+    <value>Клиент "{0}" успешно зарегистрирован!</value>
+  </data>
+  <data name="NoReportData" xml:space="preserve">
+    <value>Нет данных для отчета за эту дату</value>
+  </data>
+  <data name="ReportTitleFormat" xml:space="preserve">
+    <value>Отчет за {0:dd.MM.yyyy}</value>
+  </data>
+  <data name="ExportReportError" xml:space="preserve">
+    <value>Не удалось экспортировать отчет: {0}</value>
+  </data>
+  <data name="ExitConfirmTitle" xml:space="preserve">
+    <value>Выход</value>
+  </data>
+  <data name="ExitConfirmMessage" xml:space="preserve">
+    <value>Выйти из админ-панели?</value>
+  </data>
+  <data name="LogoutButton" xml:space="preserve">
+    <value>Выйти</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="EndSessionConfirmMessage" xml:space="preserve">
+    <value>Завершить сессию клиента "{0}"?</value>
+  </data>
+  <data name="SelectTariffForExtension" xml:space="preserve">
+    <value>Выберите тариф для продления</value>
+  </data>
+  <data name="ExtendSessionError" xml:space="preserve">
+    <value>Не удалось продлить сессию</value>
+  </data>
+  <data name="ExtendSessionSuccess" xml:space="preserve">
+    <value>Сессия успешно продлена!</value>
+  </data>
+  <data name="ExtendSessionErrorFormat" xml:space="preserve">
+    <value>Ошибка при продлении: {0}</value>
+  </data>
+  <data name="DeactivatePromotionTitle" xml:space="preserve">
+    <value>Удаление</value>
+  </data>
+  <data name="EnterZoneName" xml:space="preserve">
+    <value>Введите название зоны</value>
+  </data>
+  <data name="EnterTariffNameFormat" xml:space="preserve">
+    <value>Тариф #{0}: введите название</value>
+  </data>
+  <data name="EnterTariffDurationFormat" xml:space="preserve">
+    <value>Тариф "{0}": укажите длительность</value>
+  </data>
+  <data name="EnterTariffPriceFormat" xml:space="preserve">
+    <value>Тариф "{0}": укажите цену</value>
+  </data>
+  <data name="CardNotFound" xml:space="preserve">
+    <value>Карта не найдена</value>
+  </data>
+  <data name="EntryAllowed" xml:space="preserve">
+    <value>Вход разрешён!</value>
+  </data>
+  <data name="FillFullName" xml:space="preserve">
+    <value>Заполните ФИО клиента</value>
+  </data>
+  <data name="FillPhone" xml:space="preserve">
+    <value>Заполните номер телефона</value>
+  </data>
+  <data name="FillCard" xml:space="preserve">
+    <value>Отсканируйте или введите номер карты</value>
+  </data>
+  <data name="SelectTariff" xml:space="preserve">
+    <value>Выберите тариф</value>
+  </data>
+  <data name="UrlRequired" xml:space="preserve">
+    <value>Введите URL</value>
+  </data>
+  <data name="InvalidUrl" xml:space="preserve">
+    <value>Неверный URL</value>
+  </data>
+  <data name="UrlSchemeRequired" xml:space="preserve">
+    <value>URL должен начинаться с http:// или https://</value>
+  </data>
+  <data name="ConnectingProgress" xml:space="preserve">
+    <value>Проверка…</value>
+  </data>
+  <data name="ConnectedStatus" xml:space="preserve">
+    <value>Подключено</value>
+  </data>
+  <data name="DisconnectedStatus" xml:space="preserve">
+    <value>Нет подключения</value>
+  </data>
+  <data name="TimeoutStatus" xml:space="preserve">
+    <value>Таймаут</value>
+  </data>
+  <data name="ServerSavedRestartMessage" xml:space="preserve">
+    <value>Настройки сохранены. Перезапустите приложение для применения.</value>
+  </data>
+  <data name="ServerErrorMessageFormat" xml:space="preserve">
+    <value>Сервер ответил: {0}</value>
+  </data>
+  <data name="ServerConnectErrorPlaceholder" xml:space="preserve">
+    <value>Не удалось подключиться. Проверьте IP и порт.</value>
+  </data>
+  <data name="ServerTimeoutPlaceholder" xml:space="preserve">
+    <value>Таймаут подключения. Проверьте IP и порт.</value>
+  </data>
+  <data name="Hours" xml:space="preserve">
+    <value>Часы</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>Минуты</value>
+  </data>
+  <data name="DeleteTitle" xml:space="preserve">
+    <value>Удаление</value>
+  </data>
+  <data name="DeleteButton" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="PointCameraAtBarcode" xml:space="preserve">
+    <value>Наведите камеру на штрихкод</value>
+  </data>
+  <data name="BarcodeScanned" xml:space="preserve">
+    <value>✓ Считано</value>
+  </data>
+  <data name="SecondsUnit" xml:space="preserve">
+    <value>с</value>
+  </data>
+  <data name="ServerErrorWithDetails" xml:space="preserve">
+    <value>Ошибка сервера: {0}</value>
+  </data>
+  <data name="SessionNotFound" xml:space="preserve">
+    <value>Сессия не найдена</value>
+  </data>
+  <data name="PendingEntry" xml:space="preserve">
+    <value>Ожидает входа</value>
+  </data>
+  <data name="TimeExpired" xml:space="preserve">
+    <value>Время истекло</value>
+  </data>
+  <data name="EndButton" xml:space="preserve">
+    <value>Завершить</value>
+  </data>
+  <data name="ClientNotFound" xml:space="preserve">
+    <value>Клиент не найден</value>
+  </data>
+  <data name="ClientHasNoActiveSession" xml:space="preserve">
+    <value>У клиента нет активной сессии</value>
+  </data>
+  <data name="SessionCompleted" xml:space="preserve">
+    <value>Завершена</value>
+  </data>
+  <data name="CardAlreadyRegistered" xml:space="preserve">
+    <value>Карта уже зарегистрирована на другого клиента</value>
+  </data>
+  <data name="ClientDefaultName" xml:space="preserve">
+    <value>Клиент</value>
+  </data>
+  <data name="LessThanMinute" xml:space="preserve">
+    <value>менее минуты</value>
+  </data>
+  <data name="MinuteShort" xml:space="preserve">
+    <value>мин.</value>
+  </data>
+  <data name="NotificationTitle" xml:space="preserve">
+    <value>⏰ Время заканчивается</value>
+  </data>
+  <data name="NotificationBodyFormat" xml:space="preserve">
+    <value>У клиента "{0}" время заканчивается через {1}</value>
+  </data>
+  <data name="NotificationChannelName" xml:space="preserve">
+    <value>Напоминания о времени</value>
+  </data>
+  <data name="NotificationChannelDescription" xml:space="preserve">
+    <value>Уведомления об истекающих сессиях клиентов</value>
+  </data>
+  <data name="NoCard" xml:space="preserve">
+    <value>Без карты</value>
+  </data>
+  <data name="ReportLanguageLabel" xml:space="preserve">
+    <value>Язык отчёта</value>
+  </data>
+  <data name="ReportPeriodLabel" xml:space="preserve">
+    <value>Период</value>
+  </data>
+  <data name="ReportDay" xml:space="preserve">
+    <value>День</value>
+  </data>
+  <data name="ReportWeek" xml:space="preserve">
+    <value>Неделя</value>
+  </data>
+  <data name="ReportMonth" xml:space="preserve">
+    <value>Месяц</value>
+  </data>
+  <data name="ReportYear" xml:space="preserve">
+    <value>Год</value>
+  </data>
+</root>

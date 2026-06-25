@@ -1,0 +1,637 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="0" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="LoginTitle" xml:space="preserve">
+    <value>Autentificare</value>
+  </data>
+  <data name="Reception" xml:space="preserve">
+    <value>Înregistrare</value>
+  </data>
+  <data name="ReceptionSub" xml:space="preserve">
+    <value>Înregistrare clienți</value>
+  </data>
+  <data name="EntryControl" xml:space="preserve">
+    <value>Control acces</value>
+  </data>
+  <data name="EntryControlSub" xml:space="preserve">
+    <value>Verificare acces zone</value>
+  </data>
+  <data name="Admin" xml:space="preserve">
+    <value>Administrator</value>
+  </data>
+  <data name="AdminSub" xml:space="preserve">
+    <value>Administrare Banana Kids</value>
+  </data>
+  <data name="SearchPlaceholder" xml:space="preserve">
+    <value>Căutare după nume sau card...</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Caută</value>
+  </data>
+  <data name="NoActiveClients" xml:space="preserve">
+    <value>Niciun client activ</value>
+  </data>
+  <data name="Remaining" xml:space="preserve">
+    <value>Rămas</value>
+  </data>
+  <data name="Vip" xml:space="preserve">
+    <value>VIP</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Setări</value>
+  </data>
+  <data name="AddClient" xml:space="preserve">
+    <value>Adăugare client</value>
+  </data>
+  <data name="FullName" xml:space="preserve">
+    <value>Nume Complet</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Telefon</value>
+  </data>
+  <data name="Card" xml:space="preserve">
+    <value>Card</value>
+  </data>
+  <data name="Cardless" xml:space="preserve">
+    <value>Înregistrare fără card</value>
+  </data>
+  <data name="Scan" xml:space="preserve">
+    <value>Scanează</value>
+  </data>
+  <data name="Zone" xml:space="preserve">
+    <value>Zonă</value>
+  </data>
+  <data name="Tariff" xml:space="preserve">
+    <value>Tarif</value>
+  </data>
+  <data name="Duration" xml:space="preserve">
+    <value>Durată</value>
+  </data>
+  <data name="Promotion" xml:space="preserve">
+    <value>Promoție (opțional)</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total:</value>
+  </data>
+  <data name="MarketingConsent" xml:space="preserve">
+    <value>Acord marketing</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Adaugă</value>
+  </data>
+  <data name="TimeRemaining" xml:space="preserve">
+    <value>Timp rămas</value>
+  </data>
+  <data name="SessionActive" xml:space="preserve">
+    <value>✓ Sesiune activă</value>
+  </data>
+  <data name="SessionPending" xml:space="preserve">
+    <value>⏰ În așteptare acces</value>
+  </data>
+  <data name="SessionExpired" xml:space="preserve">
+    <value>✗ Sesiune finalizată</value>
+  </data>
+  <data name="ExpiresAt" xml:space="preserve">
+    <value>Expiră la</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Preț</value>
+  </data>
+  <data name="EndSession" xml:space="preserve">
+    <value>Finalizează sesiune</value>
+  </data>
+  <data name="ExtendSession" xml:space="preserve">
+    <value>Prelungește sesiune</value>
+  </data>
+  <data name="ConfirmExtension" xml:space="preserve">
+    <value>Confirmă prelungirea</value>
+  </data>
+  <data name="DailyReport" xml:space="preserve">
+    <value>Descărcare rapoarte</value>
+  </data>
+  <data name="DownloadCsv" xml:space="preserve">
+    <value>Descarcă raport CSV</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Ieșire</value>
+  </data>
+  <data name="Reports" xml:space="preserve">
+    <value>RAPOARTE</value>
+  </data>
+  <data name="Management" xml:space="preserve">
+    <value>ADMINISTRARE</value>
+  </data>
+  <data name="ZonesAndTariffs" xml:space="preserve">
+    <value>Zone și tarife</value>
+  </data>
+  <data name="Promotions" xml:space="preserve">
+    <value>Promoții</value>
+  </data>
+  <data name="Notifications" xml:space="preserve">
+    <value>Notificări</value>
+  </data>
+  <data name="ClientHistory" xml:space="preserve">
+    <value>Istoric clienți</value>
+  </data>
+  <data name="ServerConnection" xml:space="preserve">
+    <value>Conexiune server</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Limbă</value>
+  </data>
+  <data name="LanguageWarning" xml:space="preserve">
+    <value>Reporniți aplicația pentru a aplica modificările</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirmă</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Anulează</value>
+  </data>
+  <data name="SelectLanguage" xml:space="preserve">
+    <value>Selectează limba</value>
+  </data>
+  <data name="RestartApp" xml:space="preserve">
+    <value>Repornire</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Succes</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Eroare</value>
+  </data>
+  <data name="Info" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="HoursUnit" xml:space="preserve">
+    <value>h</value>
+  </data>
+  <data name="MinutesUnit" xml:space="preserve">
+    <value>m</value>
+  </data>
+  <data name="Lei" xml:space="preserve">
+    <value>lei</value>
+  </data>
+  <data name="HoursPlaceholder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="MinutesPlaceholder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="RegistrationMode" xml:space="preserve">
+    <value>Mod înregistrare</value>
+  </data>
+  <data name="PhysicalCard" xml:space="preserve">
+    <value>Card fizic</value>
+  </data>
+  <data name="CardlessMode" xml:space="preserve">
+    <value>Fără card</value>
+  </data>
+  <data name="CardCode" xml:space="preserve">
+    <value>Număr card</value>
+  </data>
+  <data name="Barcode" xml:space="preserve">
+    <value>Cod de bare</value>
+  </data>
+  <data name="NewClient" xml:space="preserve">
+    <value>Client nou</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Da</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Nu</value>
+  </data>
+  <data name="Entry" xml:space="preserve">
+    <value>Intrare</value>
+  </data>
+  <data name="ExtendPriceLabel" xml:space="preserve">
+    <value>Cost prelungire:</value>
+  </data>
+  <data name="VisitsToday" xml:space="preserve">
+    <value>Vizite astăzi</value>
+  </data>
+  <data name="ActiveNow" xml:space="preserve">
+    <value>Activi acum</value>
+  </data>
+  <data name="RevenueToday" xml:space="preserve">
+    <value>Venituri astăzi</value>
+  </data>
+  <data name="EnterPin" xml:space="preserve">
+    <value>Introduceți PIN-ul</value>
+  </data>
+  <data name="NameOrPhone" xml:space="preserve">
+    <value>Nume sau telefon</value>
+  </data>
+  <data name="Today" xml:space="preserve">
+    <value>Astăzi</value>
+  </data>
+  <data name="Week" xml:space="preserve">
+    <value>Săptămână</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Tot</value>
+  </data>
+  <data name="SessionsNotFound" xml:space="preserve">
+    <value>Sesiuni negăsite</value>
+  </data>
+  <data name="EnterCardCodePlaceholder" xml:space="preserve">
+    <value>Introduceți codul cardului...</value>
+  </data>
+  <data name="ActiveSessions" xml:space="preserve">
+    <value>Sesiuni active</value>
+  </data>
+  <data name="NoActiveSessions" xml:space="preserve">
+    <value>Nu există sesiuni active</value>
+  </data>
+  <data name="ExpirationWarnings" xml:space="preserve">
+    <value>Avertismente de expirare</value>
+  </data>
+  <data name="ShowNotificationWhenTimeRunningOut" xml:space="preserve">
+    <value>Afișați notificare când timpul clientului se termină</value>
+  </data>
+  <data name="HowManyMinutesBeforeEnd" xml:space="preserve">
+    <value>Cu câte minute înainte de sfârșit</value>
+  </data>
+  <data name="NotificationWarningStringFormat" xml:space="preserve">
+    <value>Notificarea va apărea cu {0} min. înainte de sfârșitul sesiunii pe pagina de înregistrare</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Salvare</value>
+  </data>
+  <data name="PromotionName" xml:space="preserve">
+    <value>Numele promoției</value>
+  </data>
+  <data name="PromotionNamePlaceholder" xml:space="preserve">
+    <value>Reducere de miercuri</value>
+  </data>
+  <data name="DiscountTypeLabel" xml:space="preserve">
+    <value>Tipul reducerii</value>
+  </data>
+  <data name="Percent" xml:space="preserve">
+    <value>Procent</value>
+  </data>
+  <data name="FixAmount" xml:space="preserve">
+    <value>Sumă fixă</value>
+  </data>
+  <data name="DiscountSize" xml:space="preserve">
+    <value>Valoarea reducerii</value>
+  </data>
+  <data name="DayOfAction" xml:space="preserve">
+    <value>Ziua de acțiune</value>
+  </data>
+  <data name="AnyDay" xml:space="preserve">
+    <value>Orice zi</value>
+  </data>
+  <data name="Mon" xml:space="preserve">
+    <value>Lu</value>
+  </data>
+  <data name="Tue" xml:space="preserve">
+    <value>Ma</value>
+  </data>
+  <data name="Wed" xml:space="preserve">
+    <value>Mi</value>
+  </data>
+  <data name="Thu" xml:space="preserve">
+    <value>Jo</value>
+  </data>
+  <data name="Fri" xml:space="preserve">
+    <value>Vi</value>
+  </data>
+  <data name="Sat" xml:space="preserve">
+    <value>Sâ</value>
+  </data>
+  <data name="Sun" xml:space="preserve">
+    <value>Du</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Activă</value>
+  </data>
+  <data name="SavePromotion" xml:space="preserve">
+    <value>Salvați promoția</value>
+  </data>
+  <data name="AddPromotion" xml:space="preserve">
+    <value>+ Adaugă promoție</value>
+  </data>
+  <data name="NoPromotionsAdded" xml:space="preserve">
+    <value>Nicio promoție adăugată</value>
+  </data>
+  <data name="ServerIpOrName" xml:space="preserve">
+    <value>Adresa IP sau numele serverului</value>
+  </data>
+  <data name="ServerIpExample" xml:space="preserve">
+    <value>De exemplu: http://KorsysBook.local:5000 sau http://192.168.1.100:5000</value>
+  </data>
+  <data name="Connect" xml:space="preserve">
+    <value>Conectare</value>
+  </data>
+  <data name="ZoneNameLabel" xml:space="preserve">
+    <value>Numele zonei</value>
+  </data>
+  <data name="ZoneNamePlaceholder" xml:space="preserve">
+    <value>Zona de joacă</value>
+  </data>
+  <data name="Tariffs" xml:space="preserve">
+    <value>Tarife</value>
+  </data>
+  <data name="AddTariff" xml:space="preserve">
+    <value>+ Adaugă tarif</value>
+  </data>
+  <data name="NoTariffsAdded" xml:space="preserve">
+    <value>Niciun tarif adăugat</value>
+  </data>
+  <data name="TariffNamePlaceholder" xml:space="preserve">
+    <value>Numele tarifului</value>
+  </data>
+  <data name="PriceLeiLabel" xml:space="preserve">
+    <value>Preț (lei)</value>
+  </data>
+  <data name="SaveZone" xml:space="preserve">
+    <value>Salvați zona</value>
+  </data>
+  <data name="AddZone" xml:space="preserve">
+    <value>+ Adaugă zonă</value>
+  </data>
+  <data name="NoZonesAdded" xml:space="preserve">
+    <value>Nicio zonă adăugată</value>
+  </data>
+  <data name="TariffCountFormat" xml:space="preserve">
+    <value>{0} tarife</value>
+  </data>
+  <data name="NoConnectionToServer" xml:space="preserve">
+    <value>Fără conexiune la server</value>
+  </data>
+  <data name="ServerError" xml:space="preserve">
+    <value>Eroare de server, încercați din nou</value>
+  </data>
+  <data name="Saved" xml:space="preserve">
+    <value>Salvat</value>
+  </data>
+  <data name="NotificationSettingsSaved" xml:space="preserve">
+    <value>Setările de notificare au fost salvate</value>
+  </data>
+  <data name="EnterPromotionName" xml:space="preserve">
+    <value>Introduceți numele promoției</value>
+  </data>
+  <data name="EnterDiscountSize" xml:space="preserve">
+    <value>Specificați valoarea reducerii</value>
+  </data>
+  <data name="DeactivatePromotionConfirm" xml:space="preserve">
+    <value>Dezactivați promoția "{0}"?</value>
+  </data>
+  <data name="DeleteZoneConfirm" xml:space="preserve">
+    <value>Ștergeți complet zona "{0}" și toate tarifele acesteia? Sesiunile active vor fi încheiate.</value>
+  </data>
+  <data name="ClientRegisteredSuccess" xml:space="preserve">
+    <value>Clientul "{0}" a fost înregistrat cu succes!</value>
+  </data>
+  <data name="NoReportData" xml:space="preserve">
+    <value>Nu există date pentru raport la această dată</value>
+  </data>
+  <data name="ReportTitleFormat" xml:space="preserve">
+    <value>Raport pentru {0:dd.MM.yyyy}</value>
+  </data>
+  <data name="ExportReportError" xml:space="preserve">
+    <value>Nu s-a putut exporta raportul: {0}</value>
+  </data>
+  <data name="ExitConfirmTitle" xml:space="preserve">
+    <value>Ieșire</value>
+  </data>
+  <data name="ExitConfirmMessage" xml:space="preserve">
+    <value>Ieșiți din panoul de administrare?</value>
+  </data>
+  <data name="LogoutButton" xml:space="preserve">
+    <value>Deconectare</value>
+  </data>
+  <data name="CancelButton" xml:space="preserve">
+    <value>Anulează</value>
+  </data>
+  <data name="EndSessionConfirmMessage" xml:space="preserve">
+    <value>Terminați sesiunea clientului "{0}"?</value>
+  </data>
+  <data name="SelectTariffForExtension" xml:space="preserve">
+    <value>Selectați un tarif pentru prelungire</value>
+  </data>
+  <data name="ExtendSessionError" xml:space="preserve">
+    <value>Prelungirea sesiunii a eșuat</value>
+  </data>
+  <data name="ExtendSessionSuccess" xml:space="preserve">
+    <value>Sesiunea a fost prelungită cu succes!</value>
+  </data>
+  <data name="ExtendSessionErrorFormat" xml:space="preserve">
+    <value>Eroare la prelungire: {0}</value>
+  </data>
+  <data name="DeactivatePromotionTitle" xml:space="preserve">
+    <value>Dezactivare</value>
+  </data>
+  <data name="EnterZoneName" xml:space="preserve">
+    <value>Introduceți numele zonei</value>
+  </data>
+  <data name="EnterTariffNameFormat" xml:space="preserve">
+    <value>Tarif #{0}: introduceți numele</value>
+  </data>
+  <data name="EnterTariffDurationFormat" xml:space="preserve">
+    <value>Tarif "{0}": specificați durata</value>
+  </data>
+  <data name="EnterTariffPriceFormat" xml:space="preserve">
+    <value>Tarif "{0}": specificați prețul</value>
+  </data>
+  <data name="CardNotFound" xml:space="preserve">
+    <value>Cardul nu a fost găsit</value>
+  </data>
+  <data name="EntryAllowed" xml:space="preserve">
+    <value>Intrare permisă!</value>
+  </data>
+  <data name="FillFullName" xml:space="preserve">
+    <value>Completați numele complet al clientului</value>
+  </data>
+  <data name="FillPhone" xml:space="preserve">
+    <value>Completați numărul de telefon</value>
+  </data>
+  <data name="FillCard" xml:space="preserve">
+    <value>Scanați sau introduceți numărul cardului</value>
+  </data>
+  <data name="SelectTariff" xml:space="preserve">
+    <value>Selectați tariful</value>
+  </data>
+  <data name="UrlRequired" xml:space="preserve">
+    <value>Introduceți adresa URL</value>
+  </data>
+  <data name="InvalidUrl" xml:space="preserve">
+    <value>Adresă URL nevalidă</value>
+  </data>
+  <data name="UrlSchemeRequired" xml:space="preserve">
+    <value>Adresa URL trebuie să înceapă cu http:// sau https://</value>
+  </data>
+  <data name="ConnectingProgress" xml:space="preserve">
+    <value>Verificare…</value>
+  </data>
+  <data name="ConnectedStatus" xml:space="preserve">
+    <value>Conectat</value>
+  </data>
+  <data name="DisconnectedStatus" xml:space="preserve">
+    <value>Fără conexiune</value>
+  </data>
+  <data name="TimeoutStatus" xml:space="preserve">
+    <value>Timp expirat</value>
+  </data>
+  <data name="ServerSavedRestartMessage" xml:space="preserve">
+    <value>Setările au fost salvate. Reporniți aplicația pentru a le aplica.</value>
+  </data>
+  <data name="ServerErrorMessageFormat" xml:space="preserve">
+    <value>Răspuns server: {0}</value>
+  </data>
+  <data name="ServerConnectErrorPlaceholder" xml:space="preserve">
+    <value>Conexiunea a eșuat. Verificați IP-ul și portul.</value>
+  </data>
+  <data name="ServerTimeoutPlaceholder" xml:space="preserve">
+    <value>Conexiunea a expirat. Verificați IP-ul și portul.</value>
+  </data>
+  <data name="Hours" xml:space="preserve">
+    <value>Ore</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>Minute</value>
+  </data>
+  <data name="DeleteTitle" xml:space="preserve">
+    <value>Ștergere</value>
+  </data>
+  <data name="DeleteButton" xml:space="preserve">
+    <value>Șterge</value>
+  </data>
+  <data name="PointCameraAtBarcode" xml:space="preserve">
+    <value>Îndreptați camera către codul de bare</value>
+  </data>
+  <data name="BarcodeScanned" xml:space="preserve">
+    <value>✓ Scanat</value>
+  </data>
+  <data name="SecondsUnit" xml:space="preserve">
+    <value>s</value>
+  </data>
+  <data name="ServerErrorWithDetails" xml:space="preserve">
+    <value>Eroare de server: {0}</value>
+  </data>
+  <data name="SessionNotFound" xml:space="preserve">
+    <value>Sesiunea nu a fost găsită</value>
+  </data>
+  <data name="PendingEntry" xml:space="preserve">
+    <value>Așteaptă intrarea</value>
+  </data>
+  <data name="TimeExpired" xml:space="preserve">
+    <value>Timp expirat</value>
+  </data>
+  <data name="EndButton" xml:space="preserve">
+    <value>Termină</value>
+  </data>
+  <data name="ClientNotFound" xml:space="preserve">
+    <value>Clientul nu a fost găsit</value>
+  </data>
+  <data name="ClientHasNoActiveSession" xml:space="preserve">
+    <value>Clientul nu are o sesiune activă</value>
+  </data>
+  <data name="SessionCompleted" xml:space="preserve">
+    <value>Completată</value>
+  </data>
+  <data name="CardAlreadyRegistered" xml:space="preserve">
+    <value>Cardul este deja înregistrat la alt client</value>
+  </data>
+  <data name="ClientDefaultName" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="LessThanMinute" xml:space="preserve">
+    <value>mai puțin de un minut</value>
+  </data>
+  <data name="MinuteShort" xml:space="preserve">
+    <value>min.</value>
+  </data>
+  <data name="NotificationTitle" xml:space="preserve">
+    <value>⏰ Timpul expiră</value>
+  </data>
+  <data name="NotificationBodyFormat" xml:space="preserve">
+    <value>Timpul clientului "{0}" expiră în {1}</value>
+  </data>
+  <data name="NotificationChannelName" xml:space="preserve">
+    <value>Mementouri de timp</value>
+  </data>
+  <data name="NotificationChannelDescription" xml:space="preserve">
+    <value>Notificări despre sesiunile clienților care expiră</value>
+  </data>
+  <data name="NoCard" xml:space="preserve">
+    <value>Fără card</value>
+  </data>
+  <data name="ReportLanguageLabel" xml:space="preserve">
+    <value>Limba raportului</value>
+  </data>
+  <data name="ReportPeriodLabel" xml:space="preserve">
+    <value>Perioadă</value>
+  </data>
+  <data name="ReportDay" xml:space="preserve">
+    <value>Zi</value>
+  </data>
+  <data name="ReportWeek" xml:space="preserve">
+    <value>Săptămână</value>
+  </data>
+  <data name="ReportMonth" xml:space="preserve">
+    <value>Lună</value>
+  </data>
+  <data name="ReportYear" xml:space="preserve">
+    <value>An</value>
+  </data>
+</root>

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:EntertainmentCenter.ViewModels"
+             xmlns:strings="clr-namespace:EntertainmentCenter.Resources.Strings"
+             x:Class="EntertainmentCenter.Views.AddClientPage"
+             x:DataType="vm:AddClientViewModel"
+             Title="{x:Static strings:AppResources.NewClient}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="0">
+
+            <!-- Full Name -->
+            <Label Text="{x:Static strings:AppResources.FullName}" Style="{StaticResource SectionLabel}" />
+            <Frame Style="{StaticResource CardStyle}" Padding="4" Margin="0,0,0,8">
+                <Entry Text="{Binding FullName}" Placeholder="Ivan Ivanov" />
+            </Frame>
+
+            <!-- Phone -->
+            <Label Text="{x:Static strings:AppResources.Phone}" Style="{StaticResource SectionLabel}" />
+            <Frame Style="{StaticResource CardStyle}" Padding="4" Margin="0,0,0,8">
+                <Entry Text="{Binding Phone}" Placeholder="+373 79 123456" Keyboard="Telephone" />
+            </Frame>
+
+            <!-- Registration Mode Segmented Control -->
+            <Label Text="{x:Static strings:AppResources.RegistrationMode}" Style="{StaticResource SectionLabel}" />
+            <Frame CornerRadius="12" Padding="4" HeightRequest="48" Margin="0,0,0,12" BackgroundColor="{StaticResource Border}" HasShadow="False" BorderColor="Transparent">
+                <Grid ColumnDefinitions="*,*">
+                    
+                    <!-- Option 1: Physical Card -->
+                    <Frame Grid.Column="0"
+                           CornerRadius="8"
+                           Padding="0"
+                           HasShadow="False"
+                           BorderColor="Transparent"
+                           BackgroundColor="{Binding IsPhysicalCard, Converter={StaticResource BoolToColor}}">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SetCardlessModeCommand}" CommandParameter="{x:Boolean False}" />
+                        </Frame.GestureRecognizers>
+                        <Label Text="{x:Static strings:AppResources.PhysicalCard}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="{Binding IsPhysicalCard, Converter={StaticResource BoolToColor}, ConverterParameter='#FFFFFF'}" />
+                    </Frame>
+                            
+                    <!-- Option 2: Cardless -->
+                    <Frame Grid.Column="1"
+                           CornerRadius="8"
+                           Padding="0"
+                           HasShadow="False"
+                           BorderColor="Transparent"
+                           BackgroundColor="{Binding IsCardless, Converter={StaticResource BoolToColor}}">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SetCardlessModeCommand}" CommandParameter="{x:Boolean True}" />
+                        </Frame.GestureRecognizers>
+                        <Label Text="{x:Static strings:AppResources.CardlessMode}"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               FontSize="14"
+                               FontAttributes="Bold"
+                               TextColor="{Binding IsCardless, Converter={StaticResource BoolToColor}, ConverterParameter='#FFFFFF'}" />
+                    </Frame>
+                </Grid>
+            </Frame>
+
+            <!-- Card code -->
+            <Label Text="{x:Static strings:AppResources.CardCode}" Style="{StaticResource SectionLabel}"
+                   IsVisible="{Binding IsPhysicalCard}" />
+            <Frame Style="{StaticResource CardStyle}" Padding="6" Margin="0,0,0,8"
+                   IsVisible="{Binding IsPhysicalCard}">
+                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                    <Entry Grid.Column="0" Text="{Binding CardCode}" Placeholder="{x:Static strings:AppResources.Barcode}" />
+                    <Button Grid.Column="1"
+                             Text="{x:Static strings:AppResources.Scan}"
+                             Command="{Binding ScanBarcodeCommand}"
+                             Style="{StaticResource ButtonSecondary}"
+                             HeightRequest="40" FontSize="13"
+                             WidthRequest="60" />
+                </Grid>
+            </Frame>
+
+            <!-- Zone picker -->
+            <Label Text="{x:Static strings:AppResources.Zone}" Style="{StaticResource SectionLabel}" />
+            <Frame Style="{StaticResource CardStyle}" Padding="4" Margin="0,0,0,8">
+                <Picker Title="Select Zone"
+                        ItemsSource="{Binding Zones}"
+                        SelectedItem="{Binding SelectedZone}"
+                        ItemDisplayBinding="{Binding Name}" />
+            </Frame>
+
+            <!-- Tariff picker -->
+            <Label Text="{x:Static strings:AppResources.Tariff}" Style="{StaticResource SectionLabel}" />
+            <Frame Style="{StaticResource CardStyle}" Padding="4" Margin="0,0,0,8">
+                <Picker Title="Select Tariff"
+                        ItemsSource="{Binding Tariffs}"
+                        SelectedItem="{Binding SelectedTariff}"
+                        ItemDisplayBinding="{Binding Label}" />
+            </Frame>
+
+            <!-- Custom duration -->
+            <Label Text="{x:Static strings:AppResources.Duration}" Style="{StaticResource SectionLabel}" />
+            <Frame Style="{StaticResource CardStyle}" Padding="8" Margin="0,0,0,8">
+                <HorizontalStackLayout Spacing="4" HorizontalOptions="Center">
+                    <Entry Text="{Binding CustomHours}" Placeholder="{x:Static strings:AppResources.HoursPlaceholder}"
+                           Keyboard="Numeric" WidthRequest="70" HorizontalTextAlignment="Center" />
+                    <Label Text="{x:Static strings:AppResources.HoursUnit}" VerticalOptions="Center" FontSize="15"
+                           TextColor="{StaticResource TextPrimary}" />
+                    <Entry Text="{Binding CustomMinutes}" Placeholder="{x:Static strings:AppResources.MinutesPlaceholder}"
+                           Keyboard="Numeric" WidthRequest="70" HorizontalTextAlignment="Center" />
+                    <Label Text="{x:Static strings:AppResources.MinutesUnit}" VerticalOptions="Center" FontSize="15"
+                           TextColor="{StaticResource TextPrimary}" />
+                </HorizontalStackLayout>
+            </Frame>
+
+            <!-- Promotion picker -->
+            <Label Text="{x:Static strings:AppResources.Promotion}" Style="{StaticResource SectionLabel}" />
+            <Frame Style="{StaticResource CardStyle}" Padding="4" Margin="0,0,0,8">
+                <Picker Title="None"
+                        ItemsSource="{Binding Promotions}"
+                        SelectedItem="{Binding SelectedPromotion}"
+                        ItemDisplayBinding="{Binding Name}" />
+            </Frame>
+
+            <!-- Final price -->
+            <Frame Padding="16" CornerRadius="14"
+                   BackgroundColor="{StaticResource YellowLight}"
+                   BorderColor="{StaticResource YellowDark}"
+                   HasShadow="False"
+                   Margin="0,8">
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="4">
+                    <Label Text="{x:Static strings:AppResources.Total}" FontSize="18"
+                           TextColor="{StaticResource YellowText}"
+                           VerticalOptions="Center" />
+                    <Label Text="{Binding FinalPrice}"
+                           TextColor="{StaticResource YellowDark}"
+                           FontSize="26" FontAttributes="Bold"
+                           VerticalOptions="Center" />
+                    <Label Text=" lei"
+                           TextColor="{StaticResource YellowText}"
+                           FontSize="16"
+                           VerticalOptions="Center" />
+                </HorizontalStackLayout>
+            </Frame>
+
+            <!-- Checkboxes -->
+            <HorizontalStackLayout Spacing="24" Margin="0,8">
+                <HorizontalStackLayout Spacing="4">
+                    <CheckBox IsChecked="{Binding IsVip}" />
+                    <Label Text="VIP" VerticalOptions="Center" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout Spacing="4">
+                    <CheckBox IsChecked="{Binding AcceptsMarketing}" />
+                    <Label Text="{x:Static strings:AppResources.MarketingConsent}" VerticalOptions="Center" />
+                </HorizontalStackLayout>
+            </HorizontalStackLayout>
+
+            <!-- Submit -->
+            <Button Text="{x:Static strings:AppResources.Add}"
+                    Command="{Binding AddClientCommand}"
+                    Style="{StaticResource ButtonPrimary}"
+                    HorizontalOptions="Fill"
+                    Margin="0,8,0,0" />
+
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
+                               Margin="0,16" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

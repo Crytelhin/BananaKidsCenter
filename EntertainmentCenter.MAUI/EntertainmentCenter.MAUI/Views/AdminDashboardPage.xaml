@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:EntertainmentCenter.ViewModels"
+    xmlns:strings="clr-namespace:EntertainmentCenter.Resources.Strings"
+    x:Class="EntertainmentCenter.Views.AdminDashboardPage"
+    x:DataType="vm:AdminDashboardViewModel"
+    Title="{x:Static strings:AppResources.Admin}"
+    BackgroundColor="{StaticResource Background}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="12">
+
+            <!-- Activity Indicator -->
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"
+                               HorizontalOptions="Center" />
+
+            <!-- Metrics Cards — 2-col grid -->
+            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="10" RowSpacing="10">
+
+                <!-- Visits Today -->
+                <Frame Grid.Row="0" Grid.Column="0" CornerRadius="12" Padding="14"
+                       BackgroundColor="{StaticResource YellowLight}" BorderColor="Transparent" HasShadow="False">
+                    <VerticalStackLayout Spacing="2">
+                        <Label Text="{x:Static strings:AppResources.VisitsToday}" FontSize="12" TextColor="{StaticResource YellowDark}" />
+                        <Label Text="{Binding VisitsToday}" FontSize="24" FontAttributes="Bold"
+                               TextColor="{StaticResource YellowText}" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Active Now -->
+                <Frame Grid.Row="0" Grid.Column="1" CornerRadius="12" Padding="14"
+                       BackgroundColor="{StaticResource YellowLight}" BorderColor="Transparent" HasShadow="False">
+                    <VerticalStackLayout Spacing="2">
+                        <Label Text="{x:Static strings:AppResources.ActiveNow}" FontSize="12" TextColor="{StaticResource YellowDark}" />
+                        <Label Text="{Binding ActiveNow}" FontSize="24" FontAttributes="Bold"
+                               TextColor="{StaticResource YellowText}" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Revenue Today — full width -->
+                <Frame Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" CornerRadius="12" Padding="14"
+                       BackgroundColor="{StaticResource YellowLight}" BorderColor="Transparent" HasShadow="False">
+                    <VerticalStackLayout Spacing="2">
+                        <Label Text="{x:Static strings:AppResources.RevenueToday}" FontSize="12" TextColor="{StaticResource YellowDark}" />
+                        <Label FontSize="24" FontAttributes="Bold" TextColor="{StaticResource YellowText}">
+                            <Label.Text>
+                                <Binding Path="RevenueToday" StringFormat="{}{0:F0} {x:Static strings:AppResources.Lei}" />
+                            </Label.Text>
+                        </Label>
+                    </VerticalStackLayout>
+                </Frame>
+            </Grid>
+
+            <!-- Daily Report Export Card -->
+            <Label Text="{x:Static strings:AppResources.Reports}" Style="{StaticResource SectionLabel}" />
+            <Frame Style="{StaticResource CardStyle}" Margin="0,0,0,6">
+                <VerticalStackLayout Spacing="8">
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                        <Label Text="{x:Static strings:AppResources.DailyReport}" FontSize="15" FontAttributes="Bold"
+                               TextColor="{StaticResource TextPrimary}" VerticalOptions="Center" />
+                        <Label Grid.Column="1" Text="📊" FontSize="18" VerticalOptions="Center" />
+                    </Grid>
+                    
+                    <!-- Date picker for Day / Week period -->
+                    <DatePicker Date="{Binding ExportDate}" Format="dd.MM.yyyy" Margin="0,4"
+                                TextColor="{StaticResource TextPrimary}"
+                                IsVisible="{Binding IsDatePickerVisible}" />
+
+                    <!-- Month + Year pickers for Month period -->
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="8" Margin="0,4"
+                          IsVisible="{Binding IsMonthPickerVisible}">
+                        <Picker Grid.Column="0" ItemsSource="{Binding Months}"
+                                SelectedIndex="{Binding SelectedMonthIndex}"
+                                TextColor="{StaticResource TextPrimary}" />
+                        <Picker Grid.Column="1" ItemsSource="{Binding Years}"
+                                SelectedItem="{Binding SelectedYear}"
+                                TextColor="{StaticResource TextPrimary}" />
+                    </Grid>
+
+                    <!-- Year picker for Year period -->
+                    <Picker ItemsSource="{Binding Years}" SelectedItem="{Binding SelectedYear}" Margin="0,4"
+                            IsVisible="{Binding IsYearPickerVisible}"
+                            TextColor="{StaticResource TextPrimary}" />
+
+                    <Label Text="{x:Static strings:AppResources.ReportLanguageLabel}" FontSize="13"
+                           TextColor="{StaticResource TextSecondary}" Margin="0,4,0,2" />
+                    <Picker ItemsSource="{Binding ReportLanguages}" SelectedItem="{Binding ReportLanguage}"
+                            Margin="0,0,0,4"
+                            TextColor="{StaticResource TextPrimary}" />
+
+                    <Label Text="{x:Static strings:AppResources.ReportPeriodLabel}" FontSize="13"
+                           TextColor="{StaticResource TextSecondary}" Margin="0,4,0,2" />
+                    <Picker ItemsSource="{Binding ReportPeriods}" SelectedItem="{Binding ReportPeriod}"
+                            Margin="0,0,0,4"
+                            TextColor="{StaticResource TextPrimary}" />
+
+                    <Button Text="{x:Static strings:AppResources.DownloadCsv}"
+                            Command="{Binding ExportReportCommand}" 
+                            Style="{StaticResource ButtonPrimary}"
+                            Margin="0,4,0,0" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Section Label -->
+            <Label Text="{x:Static strings:AppResources.Management}" Style="{StaticResource SectionLabel}" />
+
+            <!-- Menu: Zones & Tariffs -->
+            <Frame Style="{StaticResource CardStyle}" Margin="0,0,0,6">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToZonesCommand}" />
+                </Frame.GestureRecognizers>
+                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                    <Frame BackgroundColor="{StaticResource BlueLight}" CornerRadius="20"
+                           WidthRequest="40" HeightRequest="40" Padding="0" HasShadow="False" BorderColor="Transparent">
+                        <Label Text="🏟" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Frame>
+                    <Label Grid.Column="1" Text="{x:Static strings:AppResources.ZonesAndTariffs}" FontSize="15" FontAttributes="Bold"
+                           TextColor="{StaticResource TextPrimary}" VerticalOptions="Center" />
+                    <Label Grid.Column="2" Text="›" FontSize="20" TextColor="{StaticResource TextSecondary}"
+                           VerticalOptions="Center" />
+                </Grid>
+            </Frame>
+
+            <!-- Menu: Promotions -->
+            <Frame Style="{StaticResource CardStyle}" Margin="0,0,0,6">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToPromotionsCommand}" />
+                </Frame.GestureRecognizers>
+                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                    <Frame BackgroundColor="{StaticResource YellowLight}" CornerRadius="20"
+                           WidthRequest="40" HeightRequest="40" Padding="0" HasShadow="False" BorderColor="Transparent">
+                        <Label Text="🏷" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Frame>
+                    <Label Grid.Column="1" Text="{x:Static strings:AppResources.Promotions}" FontSize="15" FontAttributes="Bold"
+                           TextColor="{StaticResource TextPrimary}" VerticalOptions="Center" />
+                    <Label Grid.Column="2" Text="›" FontSize="20" TextColor="{StaticResource TextSecondary}"
+                           VerticalOptions="Center" />
+                </Grid>
+            </Frame>
+
+            <!-- Menu: Notifications -->
+            <Frame Style="{StaticResource CardStyle}" Margin="0,0,0,6">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToNotificationsCommand}" />
+                </Frame.GestureRecognizers>
+                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                    <Frame BackgroundColor="#FEE2E2" CornerRadius="20"
+                           WidthRequest="40" HeightRequest="40" Padding="0" HasShadow="False" BorderColor="Transparent">
+                        <Label Text="🔔" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Frame>
+                    <Label Grid.Column="1" Text="{x:Static strings:AppResources.Notifications}" FontSize="15" FontAttributes="Bold"
+                           TextColor="{StaticResource TextPrimary}" VerticalOptions="Center" />
+                    <Label Grid.Column="2" Text="›" FontSize="20" TextColor="{StaticResource TextSecondary}"
+                           VerticalOptions="Center" />
+                </Grid>
+            </Frame>
+
+            <!-- Menu: Client History -->
+            <Frame Style="{StaticResource CardStyle}" Margin="0,0,0,6">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToClientHistoryCommand}" />
+                </Frame.GestureRecognizers>
+                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                    <Frame BackgroundColor="{StaticResource Background}" CornerRadius="20"
+                           WidthRequest="40" HeightRequest="40" Padding="0" HasShadow="False" BorderColor="{StaticResource Border}">
+                        <Label Text="📋" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Frame>
+                    <Label Grid.Column="1" Text="{x:Static strings:AppResources.ClientHistory}" FontSize="15" FontAttributes="Bold"
+                           TextColor="{StaticResource TextPrimary}" VerticalOptions="Center" />
+                    <Label Grid.Column="2" Text="›" FontSize="20" TextColor="{StaticResource TextSecondary}"
+                           VerticalOptions="Center" />
+                </Grid>
+            </Frame>
+
+            <!-- Menu: Server Connection -->
+            <Frame Style="{StaticResource CardStyle}" Margin="0,0,0,12">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToServerConnectionCommand}" />
+                </Frame.GestureRecognizers>
+                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="12">
+                    <Frame BackgroundColor="#EDE9FE" CornerRadius="20"
+                           WidthRequest="40" HeightRequest="40" Padding="0" HasShadow="False" BorderColor="Transparent">
+                        <Label Text="🔌" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Frame>
+                    <Label Grid.Column="1" Text="{x:Static strings:AppResources.ServerConnection}" FontSize="15" FontAttributes="Bold"
+                           TextColor="{StaticResource TextPrimary}" VerticalOptions="Center" />
+                    <Label Grid.Column="2" Text="›" FontSize="20" TextColor="{StaticResource TextSecondary}"
+                           VerticalOptions="Center" />
+                </Grid>
+            </Frame>
+
+            <!-- Logout -->
+            <Button Text="{x:Static strings:AppResources.LogOut}" Style="{StaticResource ButtonDanger}" Command="{Binding LogoutCommand}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,42 @@
+name: .NET CI/CD Pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.x'
+
+    # Cache NuGet packages for faster builds
+    - name: Cache NuGet packages
+      uses: actions/cache@v4
+      with:
+        path: ~/.nuget/packages
+        key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.config', '**/*.csproj') }}
+        restore-keys: |
+          ${{ runner.os }}-nuget-
+
+    - name: Restore dependencies
+      run: dotnet restore EntertainmentCenter.API.sln
+
+    # Check code formatting
+    - name: Check code formatting
+      run: dotnet format EntertainmentCenter.API.sln --verify-no-changes
+
+    - name: Build solution
+      run: dotnet build EntertainmentCenter.API.sln --configuration Release --no-restore
+
+    - name: Run tests
+      run: dotnet test EntertainmentCenter.API.sln --configuration Release --no-build --verbosity normal
